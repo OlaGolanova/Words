@@ -9,3 +9,5 @@ function Training() {
   }
   
   export default Training;
+
+  //Для режима тренировки

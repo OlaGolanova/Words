@@ -10,3 +10,6 @@ function Words() {
   }
   
   export default Words;
+  
+
+  //Для списка слов
