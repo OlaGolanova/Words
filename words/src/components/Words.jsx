@@ -1,15 +1,14 @@
 import './Words.css';
 
-
-function Words() {
-    return (
-      <div className="Words">
-      
-      </div>
-    );
-  }
+const Words = () => {
+  return (
+    <div className="Words">
+    
+    </div>
+  );
+}
   
-  export default Words;
+export default Words;
   
 
   //Для списка слов
