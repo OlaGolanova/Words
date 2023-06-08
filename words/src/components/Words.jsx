@@ -1,14 +1,14 @@
 import './Words.css';
 
 const Words = () => {
-  return (
-    <div className="Words">
+    return (
+        <div className="Words">
     
-    </div>
-  );
-}
+        </div>
+    );
+};
   
 export default Words;
   
 
-  //Для списка слов
+//Для списка слов
