@@ -1,0 +1,26 @@
+@import '.././variables';
+
+table {
+    width: 80vw;
+    border: 2px solid $colorTableBorder;
+    border-collapse:collapse;
+    font-size: 20px;
+    th, td {
+        border: 2px solid $colorTableBorder;
+        padding: 5px;
+  
+      
+    }
+    th {
+        padding: 10px;
+        text-transform: uppercase;
+        color: $colorTh;
+    }
+    tr {
+        :hover{
+            cursor: pointer;
+            color: $colorTextHover;
+        }
+    }
+  
+}
