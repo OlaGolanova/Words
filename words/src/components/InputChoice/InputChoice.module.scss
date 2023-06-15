@@ -1,0 +1,23 @@
+@import '.././variables';
+
+.input {
+    width: 90%;
+    border-radius: 5px;
+    border: 2px solid $colorFooter;
+    color: $colorText;
+    background-color: #f0f0f0; 
+    padding: 10px;
+    &:active {
+        outline: 0;
+        outline-offset: 0;
+    }
+    &:hover {
+        outline: 0;
+        outline-offset: 0;
+    }
+    &:focus {
+        outline: 0;
+        outline-offset: 0;
+    }
+
+}

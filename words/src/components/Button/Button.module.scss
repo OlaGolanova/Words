@@ -7,13 +7,15 @@
     width: 250px;
     height: 40px;
     border-radius: 10px;
-    border: 2px solid $colorFooter;
-    color: $colorMain;
+    background: $colorBtn;
+    border: 2px solid $colorBtn;
+    color: $colorFooter;
     text-transform: uppercase;
     transition: 1s;
     &:hover {
         cursor: pointer;
         background: $colorBtntHover;
+        color: $colorTextHover;
      }
   }
 }

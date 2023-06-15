@@ -1,27 +1,37 @@
 @import '.././variables';
+.form {
+    position: relative;
 
-.searchPanel {
-    width: 550px;
-    height: 40px;
-    border-radius: 10px;
-    border: 2px solid $colorFooter;
-    color: $colorText;
-    padding-left: 35px;
-    background-color: #f0f0f0; 
-    &:active {
-        outline: 0;
-        outline-offset: 0;
+    .searchPanel {
+        width: 550px;
+        height: 40px;
+        border-radius: 10px;
+        border: 2px solid $colorFooter;
+        color: $colorText;
+        padding-left: 50px;
+        background-color: #f0f0f0; 
+     
+    
+        &:active {
+            outline: 0;
+            outline-offset: 0;
+        }
+        &:hover {
+            outline: 0;
+            outline-offset: 0;
+        }
+        &:focus {
+            outline: 0;
+            outline-offset: 0;
+        }
+        &::placeholder {
+            color: $colorMain;
+            text-transform: uppercase;
+          }
     }
-    &:hover {
-        outline: 0;
-        outline-offset: 0;
+    .search{
+        position: absolute;
+        top: 15px;
+        left: 10px;;
     }
-    &:focus {
-        outline: 0;
-        outline-offset: 0;
-    }
-    &::placeholder {
-        color: $colorMain;
-        text-transform: uppercase;
-      }
 }

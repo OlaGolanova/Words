@@ -1,18 +1,28 @@
 import React from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faClose, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+
+
 import data from '../data.json'; 
+import Input from '../InputChoice/InputChoice';
 
 import styles from './Words.module.scss';
 
+
+
 const Words = () => {
 
-    const res = data.map(function(item, index) {
+    const result = data.map(function(item, index) {
         return <tr key={item.id}>
             <td>{index+1}</td>
             <td>{item.english}</td>
             <td>{item.transcription}</td>
             <td>{item.russian}</td>
-            <td></td>
+            <td>
+                <button className={styles.pen}><FontAwesomeIcon icon={faPen} /></button>
+                <button className={styles.trash}><FontAwesomeIcon icon={faTrash} /></button>
+            </td>
         </tr>;
     });
     return (
@@ -22,10 +32,20 @@ const Words = () => {
                 <th>Слово</th>
                 <th>Транскрипция</th>
                 <th>Перевод</th>
-                <th>Условный рендеринг</th>
+                <th></th>
+            </tr>
+            <tr className={styles.choice}>
+                <td></td>
+                <td><Input/></td>
+                <td><Input/></td>
+                <td><Input/></td>
+                <td>
+                    <button className={styles.save}><FontAwesomeIcon icon={faCheck} /> Сохранить</button>
+                    <button className={styles.cancel}><FontAwesomeIcon icon={faClose} /></button>
+                </td>
             </tr>
             <tbody>
-                {res}
+                {result}
             </tbody>
         </table>
     ); 
