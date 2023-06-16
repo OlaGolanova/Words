@@ -1,6 +1,7 @@
 @import '.././variables';
 .form {
     position: relative;
+    text-align: left;
 
     .searchPanel {
         width: 550px;
@@ -28,10 +29,15 @@
             color: $colorMain;
             text-transform: uppercase;
           }
+
+        @media (max-width: 991px) {
+            width: 50vw;
+        }
     }
     .search{
         position: absolute;
         top: 15px;
         left: 10px;;
     }
+   
 }

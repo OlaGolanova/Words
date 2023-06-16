@@ -1,16 +1,20 @@
 @import '.././variables';
 
 table {
-    width: 80vw;
+    width: 100%;
     border: 2px solid $colorTableBorder;
     border-collapse:collapse;
     font-size: $fontSizeTable;
     background-color: $colorIntoInput;
+
     th{
         border: 2px solid $colorTableBorder;
         padding: 12px;
         text-transform: uppercase;
         color: $colorTh;
+        @media (max-width: 910px) {
+            padding: 0;
+          }
     } 
     td {
         border: 2px solid $colorTableBorder;
@@ -18,10 +22,12 @@ table {
         &:last-child{
             text-align: center;
         }
+        @media (max-width: 910px) {
+            padding: 0;
+          }
     }
     
     tr {
-        
         &:hover {
             cursor: pointer;
             background: $colorHeader;
@@ -46,5 +52,10 @@ table {
         }
        
     }
-   
+    @media (max-width: 991px) {
+        width: auto;
+    }
+    @media (max-width: 680px) {
+        font-size: 15px;
+      }
 }

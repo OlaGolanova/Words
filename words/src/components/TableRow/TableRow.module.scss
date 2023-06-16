@@ -1,6 +1,7 @@
 @import '.././variables';
 
 
+
 th {
     border: 2px solid $colorTableBorder;
     padding: 12px;
@@ -16,7 +17,6 @@ td {
 }
 
 tr {
-    
     &:hover {
         cursor: pointer;
         background: $colorHeader;
@@ -26,10 +26,18 @@ tr {
 .save{
     background-color: #008000;
     padding: 10px;
+
+    @media (max-width: 991px) {
+        padding: 0;
+      }
 }
 .cancel {
     background-color: #ff0000;
     padding: 10px;
+
+    @media (max-width: 991px) {
+        padding: 0;
+      }
 }
 .pen {
     background-color: #ffa500;
