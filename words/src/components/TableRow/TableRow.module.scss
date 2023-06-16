@@ -1,0 +1,61 @@
+@import '.././variables';
+
+
+th {
+    border: 2px solid $colorTableBorder;
+    padding: 12px;
+    text-transform: uppercase;
+    color: $colorTh;
+} 
+td {
+    border: 2px solid $colorTableBorder;
+    padding: 5px;
+    &:last-child{
+        text-align: center;
+    }
+}
+
+tr {
+    
+    &:hover {
+        cursor: pointer;
+        background: $colorHeader;
+    }
+    &:first-child {
+        &:hover {
+            cursor:default;
+            background: $colorIntoInput;
+        }
+    }
+}
+button {
+    padding: 5px;
+    margin-right: 5px;
+    border: none;
+    color: #ffffff;
+    border-radius: 5px;
+    &:hover {
+        cursor: pointer;
+        color: $colorText;
+    }
+    
+}
+
+.save{
+    background-color: #008000;
+    padding: 10px;
+}
+.cancel {
+    background-color: #ff0000;
+    padding: 10px;
+}
+.pen {
+    background-color: #ffa500;
+}
+.trash {
+    background-color: #ff0000;
+}
+.choice {
+    background: $colorHeader;
+
+}
