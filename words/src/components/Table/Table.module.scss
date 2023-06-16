@@ -25,14 +25,14 @@ table {
         &:hover {
             cursor: pointer;
             background: $colorHeader;
+        } 
+    }
+    .tablehead {
+        &:hover {
+            cursor:default;
+            background: $colorIntoInput;
         }
-        &:first-child {
-            &:hover {
-                cursor:default;
-                background: $colorIntoInput;
-            }
-        }
-       
+
     }
     button {
         padding: 5px;
@@ -46,21 +46,5 @@ table {
         }
        
     }
-    .save{
-        background-color: #008000;
-        padding: 10px;
-    }
-    .cancel {
-        background-color: #ff0000;
-        padding: 10px;
-    }
-    .pen {
-        background-color: #ffa500;
-    }
-    .trash {
-        background-color: #ff0000;
-    }
-    .choiceTr {
-        background: $colorHeader;
-    }
+   
 }

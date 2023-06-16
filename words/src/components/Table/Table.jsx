@@ -12,7 +12,7 @@ function Table() {
 
     return (
         <table>
-            <tr>
+            <tr className = { styles.tablehead}>
                 <th className={styles.number}></th>
                 <th>Слово</th>
                 <th>Транскрипция</th>

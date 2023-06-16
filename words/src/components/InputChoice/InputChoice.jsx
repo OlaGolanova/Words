@@ -8,7 +8,7 @@ function InputChoice(props) {
             <input 
                 className = { styles.input }
                 type = "text"
-                value = { props.english }
+                value = { props.value }
             />
         </form>
     );

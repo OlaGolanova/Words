@@ -3,8 +3,10 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash, faCheck, faClose } from '@fortawesome/free-solid-svg-icons';
 
+import InputChoice from '../InputChoice/InputChoice';
 
 import styles from './TableRow.module.scss';
+
 
 
 
@@ -33,31 +35,19 @@ function TableRow(props){
             <tr className= { styles.choiceTr }  key = { props.id }>
                 <td> { props.index+1 } </td>
                 <td> 
-                    <form action="" className={ styles.form }>
-                        <input 
-                            className = { styles.input }
-                            type = "text"
-                            value = { props.english }
-                        />
-                    </form>
+                    <InputChoice
+                        value = { props.english}
+                    />
                 </td>
                 <td> 
-                    <form action="" className={ styles.form }>
-                        <input 
-                            className = { styles.input }
-                            type = "text"
-                            value = { props.transcription }
-                        />
-                    </form>
+                    <InputChoice
+                        value = { props.transcription}
+                    />  
                 </td>
                 <td> 
-                    <form action="" className={ styles.form }>
-                        <input 
-                            className = { styles.input }
-                            type = "text"
-                            value = { props.russian }
-                        />
-                    </form>
+                    <InputChoice
+                        value = { props.russian}
+                    /> 
                 </td>
                 <td>
                     <button className={styles.save}>
