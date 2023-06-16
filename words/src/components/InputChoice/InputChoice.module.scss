@@ -4,9 +4,10 @@
     width: 90%;
     border-radius: 5px;
     border: 2px solid $colorFooter;
+    font-size: 20px;
     color: $colorText;
-    background-color: #f0f0f0; 
-    padding: 10px;
+    background-color:$colorIntoInput; 
+    padding: 7px;
     &:active {
         outline: 0;
         outline-offset: 0;

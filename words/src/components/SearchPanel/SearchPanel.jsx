@@ -6,7 +6,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import styles from './SearchPanel.module.scss';
 
 
-const SearchPanel = () => {
+function SearchPanel() {
     return (
         <form action="" className={styles.form}> 
             <div className={styles.search}>

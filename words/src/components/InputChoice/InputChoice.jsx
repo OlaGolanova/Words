@@ -2,12 +2,13 @@ import React from 'react';
 
 import styles from './InputChoice.module.scss';
 
-const InputChoice = () => {
+function InputChoice(props) {
     return ( 
-        <form action="" className={styles.form}>
+        <form action="" className={ styles.form }>
             <input 
-                className={styles.input}
-                type="text"
+                className = { styles.input }
+                type = "text"
+                value = { props.english }
             />
         </form>
     );

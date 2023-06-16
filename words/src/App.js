@@ -1,6 +1,8 @@
+import React from 'react';
+
 import styles from './App.module.scss';
 
-import Words from './components/Words/Words';
+import Table from './components/Table/Table';
 import Card from './components/Card/Card';
 
 
@@ -9,7 +11,7 @@ import Card from './components/Card/Card';
 function App() {
     return (
         <div className={styles.app}>
-            <Words/>
+            <Table/>
             <Card/>
           
         </div>

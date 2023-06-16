@@ -1,8 +1,8 @@
 import React from 'react';
 
-import styles from './Button.module.scss';
+import styles from './ButtonTraining.module.scss';
 
-const Button = () => {
+function ButtonTraining(){
     return ( 
         <div className={styles.button}>
             <button>Режим тренировки</button>
@@ -11,5 +11,5 @@ const Button = () => {
     );
 };
   
-export default Button;
+export default ButtonTraining;
   

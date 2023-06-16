@@ -1,17 +1,17 @@
 import React from 'react';
 
 import SearchPanel from '../SearchPanel/SearchPanel';
-import Button from '../Button/Button';
+import ButtonTraining from '../ButtonTraining/ButtonTraining';
 
 import styles from './Header.module.scss';
 
-const Header = () => {
+function Header(){
     return (
         <header>
             <div className={styles.header}>
                 Здесь можно будет найти слово из таблицы или выбрать категорию
                 <SearchPanel/>
-                <Button/>
+                <ButtonTraining/>
             </div>
 
         </header>

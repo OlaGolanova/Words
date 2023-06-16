@@ -4,10 +4,11 @@ table {
     width: 80vw;
     border: 2px solid $colorTableBorder;
     border-collapse:collapse;
-    font-size: 20px;
+    font-size: $fontSizeTable;
+    background-color: $colorIntoInput;
     th{
         border: 2px solid $colorTableBorder;
-        padding: 10px;
+        padding: 12px;
         text-transform: uppercase;
         color: $colorTh;
     } 
@@ -18,11 +19,19 @@ table {
             text-align: center;
         }
     }
+    
     tr {
-        &:hover{
+        
+        &:hover {
             cursor: pointer;
-            color: $colorTextHover;
-        } 
+            background: $colorHeader;
+        }
+        &:first-child {
+            &:hover {
+                cursor:default;
+                background: $colorIntoInput;
+            }
+        }
     }
     button {
         padding: 5px;
@@ -32,15 +41,17 @@ table {
         border-radius: 5px;
         &:hover {
             cursor: pointer;
-            color: $colorTextHover;
+            color: $colorText;
         }
        
     }
     .save{
         background-color: #008000;
+        padding: 10px;
     }
     .cancel {
         background-color: #ff0000;
+        padding: 10px;
     }
     .pen {
         background-color: #ffa500;
