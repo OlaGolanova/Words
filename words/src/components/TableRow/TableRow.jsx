@@ -10,6 +10,7 @@ import styles from './TableRow.module.scss';
 
 function TableRow(props){
 
+
     let result = (
         <tr key = { props.id }>
             <td> { props.index+1 } </td>
@@ -29,7 +30,7 @@ function TableRow(props){
       
     if(props.choice){
         result = (
-            <tr key = { props.id }>
+            <tr className= { styles.choiceTr }  key = { props.id }>
                 <td> { props.index+1 } </td>
                 <td> 
                     <form action="" className={ styles.form }>
@@ -72,11 +73,10 @@ function TableRow(props){
     }
 
     return (
-        {result}
+        result
     );
             
 }
 
 export default TableRow;
-
 
