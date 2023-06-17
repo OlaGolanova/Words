@@ -11,6 +11,8 @@
         color: $colorText;
         padding-left: 50px;
         background-color: $colorIntoInput; 
+        font-size: $fontSizeTable;
+        font-family: $fontMain;
      
     
         &:active {
@@ -28,6 +30,7 @@
         &::placeholder {
             color: $colorMain;
             text-transform: uppercase;
+            font-size: 14px;
           }
 
         @media (max-width: 991px) {
