@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash, faCheck, faClose } from '@fortawesome/free-solid-svg-icons';
@@ -12,14 +12,31 @@ import styles from './TableRow.module.scss';
 
 export default function TableRow(props){
     const {id, index, english, transcription, russian} = props;
-    let result = (
+
+    const [ pressed, setPressed ] = useState(false);
+    const [editEnglish, setEnglish] = useState(english);
+    const [editTranscription, setTranscription] = useState(transcription);
+    const [editRussian, setRussian] = useState(russian);
+
+   
+
+    const handleChangeRow = () => {
+        setPressed(!pressed);
+    };
+
+    
+
+
+    const row = (
         <tr key = { id }>
             <td> { index+1 } </td>
             <td> { english } </td>
             <td> { transcription } </td>
             <td> { russian } </td>
             <td>
-                <button className = { styles.pen }>
+                <button 
+                    className = { styles.pen }
+                    onClick={handleChangeRow}>
                     <FontAwesomeIcon icon={faPen} />
                 </button>
                 <button className = { styles.trash }>
@@ -29,40 +46,44 @@ export default function TableRow(props){
         </tr>
     );
       
-    if(props.choice){
-        result = (
-            <tr className= { styles.choiceTr }  key = { id }>
-                <td> { index+1 } </td>
-                <td> 
-                    <InputChoice
-                        value = { english}
-                    />
-                </td>
-                <td> 
-                    <InputChoice
-                        value = { transcription}
-                    />  
-                </td>
-                <td> 
-                    <InputChoice
-                        value = { russian}
-                    /> 
-                </td>
-                <td>
-                    <button className={styles.save}>
-                        <FontAwesomeIcon icon={faCheck} />
-                        Сохранить
-                    </button>
-                    <button className={styles.cancel}>
-                        <FontAwesomeIcon icon={faClose} />
-                    </button>
-                </td>
-            </tr> 
-        );     
-    }
+    
+    const rowChoice = (
+        <tr className= { styles.choiceTr }  key = { id }>
+            <td> { index+1 } </td>
+            <td> 
+                <InputChoice
+                    value = {editEnglish}
+                    onChange={e => setEnglish(e.target.value)}
+                />
+            </td>
+            <td> 
+                <InputChoice
+                    value={editTranscription}
+                    onChange={e => setTranscription(e.target.value)}
+                />  
+            </td>
+            <td> 
+                <InputChoice
+                    value={editRussian}
+                    onChange={e => setRussian(e.target.value)}
+                /> 
+            </td>
+            <td>
+                <button className={styles.save}>
+                    <FontAwesomeIcon icon={faCheck} />
+                    Сохранить
+                </button>
+                <button 
+                    className={styles.cancel}
+                    onClick={handleChangeRow}>
+                    <FontAwesomeIcon icon={faClose} />
+                </button>
+            </td>
+        </tr>      
+    );
 
     return (
-        result
+        pressed ? rowChoice : row
     );
             
 };

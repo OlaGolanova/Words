@@ -4,7 +4,7 @@ import data from '../../utils/data.json';
 
 import CardSide from '../CardSide/CardSide';
 
-import styles from './Card.module.scss';
+// import styles from './Card.module.scss';
 
 
 
