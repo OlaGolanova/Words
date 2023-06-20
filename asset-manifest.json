@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Words/static/css/main.427359c6.css",
-    "main.js": "/Words/static/js/main.2871502a.js",
+    "main.js": "/Words/static/js/main.4469aeee.js",
     "index.html": "/Words/index.html",
     "main.427359c6.css.map": "/Words/static/css/main.427359c6.css.map",
-    "main.2871502a.js.map": "/Words/static/js/main.2871502a.js.map"
+    "main.4469aeee.js.map": "/Words/static/js/main.4469aeee.js.map"
   },
   "entrypoints": [
     "static/css/main.427359c6.css",
-    "static/js/main.2871502a.js"
+    "static/js/main.4469aeee.js"
   ]
 }
