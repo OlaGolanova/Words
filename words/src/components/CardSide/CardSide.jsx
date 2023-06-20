@@ -12,7 +12,7 @@ export default function CardSide(props){
         setPressed(!pressed);
     };
     const handleChangeFlip = () => {
-        setPressed(!setFlipChange);
+        setFlipChange(!flipChange);
     };
     
 
@@ -27,12 +27,11 @@ export default function CardSide(props){
     );
 
     return (
-        <div className={styles.card} 
-            onClick={ handleChangeFlip } >  
+        <div className={styles.card} onClick={handleChangeFlip}>
             <div className = { styles.englishWord }>{ english }</div>
             <div className = { styles.transcription }>{ transcription }</div>
-            <>  {pressed ? sideFlip : sideFront}
-                { flipChange && sideFront}</>
+            <>{pressed ? sideFlip : sideFront}
+                {flipChange && sideFront}</>
         </div>
     );
 };
