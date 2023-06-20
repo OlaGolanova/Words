@@ -10,15 +10,14 @@ import styles from './TableRow.module.scss';
 
 
 
-function TableRow(props){
-
-
+export default function TableRow(props){
+    const {id, index, english, transcription, russian} = props;
     let result = (
-        <tr key = { props.id }>
-            <td> { props.index+1 } </td>
-            <td> { props.english } </td>
-            <td> { props.transcription } </td>
-            <td> { props.russian } </td>
+        <tr key = { id }>
+            <td> { index+1 } </td>
+            <td> { english } </td>
+            <td> { transcription } </td>
+            <td> { russian } </td>
             <td>
                 <button className = { styles.pen }>
                     <FontAwesomeIcon icon={faPen} />
@@ -32,21 +31,21 @@ function TableRow(props){
       
     if(props.choice){
         result = (
-            <tr className= { styles.choiceTr }  key = { props.id }>
-                <td> { props.index+1 } </td>
+            <tr className= { styles.choiceTr }  key = { id }>
+                <td> { index+1 } </td>
                 <td> 
                     <InputChoice
-                        value = { props.english}
+                        value = { english}
                     />
                 </td>
                 <td> 
                     <InputChoice
-                        value = { props.transcription}
+                        value = { transcription}
                     />  
                 </td>
                 <td> 
                     <InputChoice
-                        value = { props.russian}
+                        value = { russian}
                     /> 
                 </td>
                 <td>
@@ -66,7 +65,5 @@ function TableRow(props){
         result
     );
             
-}
-
-export default TableRow;
+};
 

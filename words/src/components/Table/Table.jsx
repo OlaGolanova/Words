@@ -1,6 +1,6 @@
 import React from 'react';
 
-import data from '../data.json'; 
+import data from '../../utils/data.json'; 
 
 import TableRow from '../TableRow/TableRow';
 

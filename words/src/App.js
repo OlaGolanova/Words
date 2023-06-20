@@ -11,7 +11,7 @@ import Card from './components/Card/Card';
 function App() {
     return (
         <div className={styles.app}>
-            <Table/>
+            {/* <Table/> */}
             <Card/>
           
         </div>

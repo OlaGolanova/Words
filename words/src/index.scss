@@ -1,4 +1,4 @@
-@import './components/variables';
+@import './utils/variables';
 
 body {
   min-height: 100vh;
@@ -7,6 +7,7 @@ body {
   box-sizing: border-box;
   color: $colorText;
   font-family: $fontMain;
+  font-weight: 400;
 }
 
 

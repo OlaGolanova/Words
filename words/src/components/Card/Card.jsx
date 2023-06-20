@@ -1,17 +1,28 @@
 import React from 'react';
 
+import data from '../../utils/data.json'; 
+
+import CardSide from '../CardSide/CardSide';
+
 import styles from './Card.module.scss';
 
 
-function Card(){
+
+
+export default function Card(){
+
     return (
-        <div className={styles.card}>
-    
-        </div>
+        <>
+            <CardSide
+                english = { data[0].english }
+                transcription = { data[0].transcription }
+                russian = { data[0].russian }
+            />
+        </>
     );
 };
   
-export default Card;
+
   
 
 //Для одной карточки со словом
