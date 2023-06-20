@@ -14,7 +14,7 @@ function App() {
     return (
         <div className={styles.app}>
             <Table/>
-            {/* <Card/> */}
+            <Card/>
           
         </div>
     );
