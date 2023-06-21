@@ -8,16 +8,14 @@ import Card from './components/Card/Card';
 
 
 
-function App() {
-
+export default function App() {
 
     return (
-        <div className={styles.app}>
+        <div className = { styles.app }>
             <Table/>
             <Card/>
-          
         </div>
     );
-}
+};
 
-export default App;
+ 

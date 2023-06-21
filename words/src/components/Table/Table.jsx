@@ -4,11 +4,12 @@ import data from '../../utils/data.json';
 
 import TableRow from '../TableRow/TableRow';
 
+
 import styles from './Table.module.scss';
 
 
 
-function Table() {
+export default function Table() {
 
     return (
         <table>
@@ -40,7 +41,7 @@ function Table() {
     
 };
   
-export default Table;
+
   
 
 //Для списка слов

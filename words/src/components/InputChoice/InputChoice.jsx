@@ -2,9 +2,9 @@ import React from 'react';
 
 import styles from './InputChoice.module.scss';
 
-function InputChoice(props) {
+export default function InputChoice(props) {
 
-    const { value } = props;
+    const { value, onEdit } = props;
 
     return ( 
         <form action="">
@@ -12,9 +12,9 @@ function InputChoice(props) {
                 className = { styles.input }
                 type = "text"
                 value = { value }
+                onChange = { onEdit }
             />
         </form>
     );
 };
   
-export default InputChoice;

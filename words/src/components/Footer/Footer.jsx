@@ -4,13 +4,12 @@ import styles from './Footer.module.scss';
 
 
 
-function Footer(){
+export default function Footer(){
     return (
-        <footer className={styles.footer}>
+        <footer className = { styles.footer }>
         
         </footer>
     );
 };
 
   
-export default Footer;

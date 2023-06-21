@@ -18,15 +18,11 @@ export default function TableRow(props){
     const [editTranscription, setTranscription] = useState(transcription);
     const [editRussian, setRussian] = useState(russian);
 
-   
-
     const handleChangeRow = () => {
         setPressed(!pressed);
     };
 
     
-
-
     const row = (
         <tr key = { id }>
             <td> { index+1 } </td>
@@ -36,11 +32,11 @@ export default function TableRow(props){
             <td>
                 <button 
                     className = { styles.pen }
-                    onClick={handleChangeRow}>
-                    <FontAwesomeIcon icon={faPen} />
+                    onClick = { handleChangeRow }>
+                    <FontAwesomeIcon icon = { faPen } />
                 </button>
                 <button className = { styles.trash }>
-                    <FontAwesomeIcon icon={faTrash} />
+                    <FontAwesomeIcon icon = { faTrash } />
                 </button>
             </td>
         </tr>
@@ -52,31 +48,31 @@ export default function TableRow(props){
             <td> { index+1 } </td>
             <td> 
                 <InputChoice
-                    value = {editEnglish}
-                    onChange={e => setEnglish(e.target.value)}
+                    value = { editEnglish }
+                    onEdit = { e => setEnglish(e.target.value) }
                 />
             </td>
             <td> 
                 <InputChoice
-                    value={editTranscription}
-                    onChange={e => setTranscription(e.target.value)}
+                    value = { editTranscription }
+                    onEdit = { e => setTranscription(e.target.value) }
                 />  
             </td>
             <td> 
                 <InputChoice
-                    value={editRussian}
-                    onChange={e => setRussian(e.target.value)}
+                    value = { editRussian }
+                    onEdit = { e => setRussian(e.target.value) }
                 /> 
             </td>
             <td>
-                <button className={styles.save}>
-                    <FontAwesomeIcon icon={faCheck} />
+                <button className={ styles.save }>
+                    <FontAwesomeIcon icon = { faCheck } />
                     Сохранить
                 </button>
                 <button 
-                    className={styles.cancel}
-                    onClick={handleChangeRow}>
-                    <FontAwesomeIcon icon={faClose} />
+                    className = { styles.cancel }
+                    onClick = { handleChangeRow }>
+                    <FontAwesomeIcon icon = { faClose } />
                 </button>
             </td>
         </tr>      
