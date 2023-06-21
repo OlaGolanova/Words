@@ -1,6 +1,7 @@
 @import '../../utils/variables';
 
 .form {
+    margin-top: 35px;
     position: relative;
     text-align: left;
 
@@ -34,8 +35,8 @@
             font-size: 14px;
           }
 
-        @media (max-width: 991px) {
-            width: 50vw;
+        @media (max-width: 1200px) {
+            width: 40vw;
         }
     }
     .search{
@@ -43,5 +44,5 @@
         top: 15px;
         left: 10px;;
     }
-   
+
 }

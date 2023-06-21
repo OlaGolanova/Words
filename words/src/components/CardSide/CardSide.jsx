@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styles from './CardSide.module.scss';
 
 export default function CardSide(props){
-    const {english, transcription, russian} = props;
+    const {id, english, transcription, russian} = props;
 
     const [ pressed, setPressed ] = useState(false);
     // const [ flipChange, setFlipChange ] = useState(false);
@@ -30,7 +30,7 @@ export default function CardSide(props){
     );
 
     return (
-        <div className={styles.card}>
+        <div className={styles.card} key = { id }>
             <div className = { styles.englishWord }>{ english }</div>
             <div className = { styles.transcription }>{ transcription }</div>
             <>{pressed ? sideFlip : sideFront}

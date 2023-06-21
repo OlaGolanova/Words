@@ -2,10 +2,21 @@
 
 
 header {
+    display: flex;
+    justify-content: space-between;
     min-height: 100px;
     background: $colorHeader;
     padding: 50px 200px 50px 200px;
 
+    .logo {
+      width: 170px;
+
+      @media (max-width: 991px) {
+        width: 130px;
+        height: 130px;
+      }
+    }
+    
     @media (max-width: 991px) {
         padding: 30px;
       }
