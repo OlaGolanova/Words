@@ -1,12 +1,23 @@
 @import '../../utils/variables';
 
-footer {
+.footer {
 
-    padding: 0 200px 0 200px;
+    padding: 70px 200px 0 200px;
     min-height: 100px;
     background: $colorFooter;
 
      @media (max-width: 991px) {
     padding: 0 30px 0 30px;
+  }
+  a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: $colorText;
+    transition: 0.5s;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }

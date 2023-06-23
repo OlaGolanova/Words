@@ -4,7 +4,6 @@ import data from '../../utils/data.json';
 
 import TableRow from '../TableRow/TableRow';
 
-
 import styles from './Table.module.scss';
 
 

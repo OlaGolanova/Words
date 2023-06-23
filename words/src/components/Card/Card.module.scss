@@ -1,2 +1,21 @@
 @import '../../utils/variables';
 
+
+    .button {
+        width: 100px;
+        height: 75vh;
+        border: none;
+        background: $colorMain;
+        transition: 0.5s;
+        &:first-child {
+            margin-right: 50px;
+        }
+        &:last-child {
+            margin-left: 50px;
+        }
+        &:hover {
+            cursor:pointer;
+            background:  #e0e0e0;
+        }
+    
+    }
