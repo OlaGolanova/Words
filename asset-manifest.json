@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/Words/static/css/main.4e115de4.css",
-    "main.js": "/Words/static/js/main.bd8331dc.js",
+    "main.css": "/Words/static/css/main.02ca80d2.css",
+    "main.js": "/Words/static/js/main.d7adf48d.js",
     "static/media/logo1.png": "/Words/static/media/logo1.027232f727f4a8bbda14.png",
     "index.html": "/Words/index.html",
-    "main.4e115de4.css.map": "/Words/static/css/main.4e115de4.css.map",
-    "main.bd8331dc.js.map": "/Words/static/js/main.bd8331dc.js.map"
+    "main.02ca80d2.css.map": "/Words/static/css/main.02ca80d2.css.map",
+    "main.d7adf48d.js.map": "/Words/static/js/main.d7adf48d.js.map"
   },
   "entrypoints": [
-    "static/css/main.4e115de4.css",
-    "static/js/main.bd8331dc.js"
+    "static/css/main.02ca80d2.css",
+    "static/js/main.d7adf48d.js"
   ]
 }
