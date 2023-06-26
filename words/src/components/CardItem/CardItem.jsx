@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import styles from './CardItem.module.scss';
+import './CardItem.scss';
 
 export default function CardItem(props){
-    const {id, english = 'loading', transcription = 'ˈləʊdɪŋ', russian ='загрузка'} = props;
+    const {id, color, english = 'loading', transcription = 'ˈləʊdɪŋ', russian ='загрузка'} = props;
 
    
     const [ pressed, setPressed ] = useState(false);
@@ -12,25 +12,23 @@ export default function CardItem(props){
         setPressed(!pressed);
     };
 
-    const sideFront = (
+    const sideBtnFront = (
         <button 
-            className = { styles.button } 
-            onClick={handleChange}> Проверить </button>  
+            className = "button_check"  
+            onClick = { handleChange }> Проверить </button>  
     ); 
-    const sideFlip = (
+    const sideBtnFlip = (
         <div 
-            className = { styles.translate }
-            onClick={handleChange}
+            className = "translate" 
+            onClick = { handleChange }
         >{ russian }</div> 
     );
 
-
     return (
-        <div className={styles.card} key = { id }>
-            <div className = { styles.englishWord }>{ english }</div>
-            <div className = { styles.transcription }>{ transcription }</div>
-            <>{pressed ? sideFlip : sideFront}</>
-         
+        <div className = "card"   key = { id }>
+            <div className = {`englishWord ${color}`}  >{ english }</div>
+            <div className = "transcription" >{ transcription }</div>
+            <> { pressed ? sideBtnFlip : sideBtnFront } </>
         </div>
     );
 };

@@ -4,7 +4,7 @@ import data from '../../utils/data.json';
 
 import TableRow from '../TableRow/TableRow';
 
-import styles from './Table.module.scss';
+import './Table.scss';
 
 
 
@@ -12,8 +12,8 @@ export default function Table() {
 
     return (
         <table>
-            <tr className = { styles.tablehead}>
-                <th className={styles.number}></th>
+            <tr className = "tablehead">
+                <th className= "number"></th>
                 <th>Слово</th>
                 <th>Транскрипция</th>
                 <th>Перевод</th>

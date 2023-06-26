@@ -1,0 +1,89 @@
+@import '../../utils/variables';
+
+
+header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    min-height: 100px;
+    background: $colorHeader;
+    padding: 50px 200px 50px 200px;
+    .header {
+      display: flex;
+      flex-direction: column;
+    }
+    .form {
+      margin-top: 120px;
+      position: relative;
+      text-align: left;
+  
+      .searchPanel {
+          width: 400px;
+          height: 40px;
+          border-radius: 10px;
+          border: 2px solid $colorFooter;
+          color: $colorText;
+          padding-left: 50px;
+          background-color: $colorIntoInput; 
+          font-size: $fontSizeTable;
+          font-family: $fontMain;
+       
+          &:active {
+              outline: 0;
+              outline-offset: 0;
+          }
+          &:hover {
+              outline: 0;
+              outline-offset: 0;
+          }
+          &:focus {
+              outline: 0;
+              outline-offset: 0;
+          }
+          &::placeholder {
+              color: $colorMain;
+              text-transform: uppercase;
+              font-size: 14px;
+            }
+  
+          @media (max-width: 1200px) {
+              width: 40vw;
+          }
+      }
+      .search{
+          position: absolute;
+          top: 15px;
+          left: 10px;      }
+  
+  }
+    button {
+      position: absolute;
+      width: 250px;
+      height: 44px;
+      top: 75px;
+      border-radius: 10px;
+      background: $colorBtn;
+      border: 2px solid $colorBtn;
+      color: $colorFooter;
+      text-transform: uppercase;
+      transition: 1s;
+      &:hover {
+          cursor: pointer;
+          background: $colorBtntHover;
+          color: $colorTextHoverBtn;
+       }
+    }
+    .logo {
+      width: 170px;
+
+      @media (max-width: 991px) {
+        width: 130px;
+        height: 130px;
+      }
+    }
+    
+    @media (max-width: 991px) {
+        padding: 30px;
+      }
+
+}

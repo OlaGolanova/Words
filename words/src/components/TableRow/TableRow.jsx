@@ -5,7 +5,7 @@ import { faPen, faTrash, faCheck, faClose } from '@fortawesome/free-solid-svg-ic
 
 import InputChoice from '../InputChoice/InputChoice';
 
-import styles from './TableRow.module.scss';
+import './TableRow.scss';
 
 
 
@@ -31,11 +31,11 @@ export default function TableRow(props){
             <td> { russian } </td>
             <td>
                 <button 
-                    className = { styles.pen }
+                    className = "pen" 
                     onClick = { handleChangeRow }>
                     <FontAwesomeIcon icon = { faPen } />
                 </button>
-                <button className = { styles.trash }>
+                <button className = "trash" >
                     <FontAwesomeIcon icon = { faTrash } />
                 </button>
             </td>
@@ -44,7 +44,7 @@ export default function TableRow(props){
       
     
     const rowChoice = (
-        <tr className= { styles.choiceTr }  key = { id }>
+        <tr className= "choiceTr"   key = { id }>
             <td> { index+1 } </td>
             <td> 
                 <InputChoice
@@ -65,12 +65,12 @@ export default function TableRow(props){
                 /> 
             </td>
             <td>
-                <button className={ styles.save }>
+                <button className= "save" >
                     <FontAwesomeIcon icon = { faCheck } />
                     Сохранить
                 </button>
                 <button 
-                    className = { styles.cancel }
+                    className = "cancel" 
                     onClick = { handleChangeRow }>
                     <FontAwesomeIcon icon = { faClose } />
                 </button>

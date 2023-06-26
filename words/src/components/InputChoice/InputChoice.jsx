@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './InputChoice.module.scss';
+import './InputChoice.scss';
 
 export default function InputChoice(props) {
 
@@ -9,7 +9,7 @@ export default function InputChoice(props) {
     return ( 
         <form action="">
             <input 
-                className = { styles.input }
+                className = "input" 
                 type = "text"
                 value = { value }
                 onChange = { onEdit }

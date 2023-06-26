@@ -2,6 +2,8 @@
 
 
 table {
+    margin-top: 100px;
+    margin-bottom: 100px;
     width: 100%;
     border: 2px solid $colorTableBorder;
     border-collapse:collapse;
@@ -10,7 +12,7 @@ table {
 
     th{
         border: 2px solid $colorTableBorder;
-        padding: 12px;
+        padding: 18px;
         text-transform: uppercase;
         color: $colorTh;
         @media (max-width: 910px) {

@@ -7,56 +7,81 @@ import data from '../../utils/data.json';
 
 import CardItem from '../CardItem/CardItem';
 
-import styles from './Card.module.scss';
+import './Card.scss';
 
 
 
 export default function Card(props){
-    const {indexCard} = props;
+    const { indexCard } = props;
+    const arrColorWords = [ 'red', 'orange', 'yellow', 'green', 'blue', 'main', 'violet' ];
+    const rand = Math.floor(Math.random()*arrColorWords.length);
+    const randomColor = arrColorWords[rand];
+
+    const [ index, setIndex ] = useState(indexCard ? indexCard : 0);
+    const [ pressed, setAnimation ] = useState(true);
+    const [ colorWord, setColorWord ] = useState('main');
   
-    const [index, setIndex] = useState(indexCard ? indexCard : 0);
+  
 
     const handleChangePrevCard = () => {
         if (index > 0) {
             setIndex(index - 1);
+        } else if (index === 0) {
+            setIndex(data.length - 1);
         };
+        
+        addAnimationCard();
     };
 
     const handleChangeNextCard = () => {
         if (index < data.length - 1) {
             setIndex(index + 1);
+        } else if (index === (data.length - 1)){
+            setIndex(0);
         };
+      
+        addAnimationCard();
     };
+
+    function deleteAnimation(){
+        setAnimation(pressed);
+    };
+    function addAnimationCard(){
+        setColorWord(randomColor);
+        setAnimation(!pressed);
+        setTimeout(deleteAnimation, 1);
+    }
+
 
     return (
         <> 
-        
             <button 
-                className = {styles.button}
-                onClick = { handleChangePrevCard } >
+                className = "button"
+                onClick = { handleChangePrevCard }>
                 <FontAwesomeIcon
                     className = "fa-2x"
                     icon = { faChevronLeft }/>
             </button>
 
-
-            <CardItem
-                english = { data[index].english }
-                transcription = { data[index].transcription }
-                russian = { data[index].russian }
-                
-            />
-
-
+            <div className = "wrapper">
+                <div className = { pressed ? 'cardItem' : 'animation' }>
+                    <CardItem
+                        color = { colorWord }
+                        english = { data[index].english }
+                        transcription = { data[index].transcription }
+                        russian = { data[index].russian }
+                    />
+                </div>
+                <div className = "counter" > { index + 1 } / { data.length }</div>
+            </div>
+            
             <button 
-                className = {styles.button}
+                className = "button"
                 onClick = { handleChangeNextCard } >
                 <FontAwesomeIcon
                     className = "fa-2x"
                     icon = { faChevronRight }/>
             </button>
-
-      
         </>
     );
 };
