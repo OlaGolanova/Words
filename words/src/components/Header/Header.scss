@@ -18,7 +18,7 @@ header {
       text-align: left;
   
       .searchPanel {
-          width: 400px;
+          width: 200px;
           height: 40px;
           border-radius: 10px;
           border: 2px solid $colorFooter;
@@ -45,10 +45,6 @@ header {
               text-transform: uppercase;
               font-size: 14px;
             }
-  
-          @media (max-width: 1200px) {
-              width: 40vw;
-          }
       }
       .search{
           position: absolute;
@@ -56,7 +52,7 @@ header {
           left: 10px;      }
   
   }
-    button {
+    .header_btn {
       position: absolute;
       width: 250px;
       height: 44px;
@@ -81,9 +77,11 @@ header {
         height: 130px;
       }
     }
-    
+   
     @media (max-width: 991px) {
         padding: 30px;
       }
 
+
 }
+

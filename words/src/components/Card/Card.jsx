@@ -21,7 +21,6 @@ export default function Card(props){
     const [ pressed, setAnimation ] = useState(true);
     const [ colorWord, setColorWord ] = useState('main');
   
-  
 
     const handleChangePrevCard = () => {
         if (index > 0) {
@@ -52,7 +51,6 @@ export default function Card(props){
         setTimeout(deleteAnimation, 1);
     }
 
-
     return (
         <> 
             <button 
@@ -82,6 +80,8 @@ export default function Card(props){
                     className = "fa-2x"
                     icon = { faChevronRight }/>
             </button>
+
+         
         </>
     );
 };
