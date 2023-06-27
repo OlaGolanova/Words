@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import './CardItem.scss';
 
 export default function CardItem(props){
-    const {id, color, english = 'loading', transcription = 'ˈləʊdɪŋ', russian ='загрузка'} = props;
-
+    const {
+        id, 
+        color, 
+        english = 'loading', 
+        transcription = 'ˈləʊdɪŋ', 
+        russian ='загрузка', 
+        pressed, 
+        setPressed 
+    } = props;
    
-    const [ pressed, setPressed ] = useState(false);
-
     const handleChange = () => {
         setPressed(!pressed);
     };
@@ -17,6 +22,7 @@ export default function CardItem(props){
             className = "button_check"  
             onClick = { handleChange }> Проверить </button>  
     ); 
+
     const sideBtnFlip = (
         <div 
             className = "translate" 

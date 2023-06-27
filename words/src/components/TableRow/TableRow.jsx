@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash, faCheck, faClose } from '@fortawesome/free-solid-svg-icons';
 
 import InputChoice from '../InputChoice/InputChoice';
-
 import './TableRow.scss';
 
 

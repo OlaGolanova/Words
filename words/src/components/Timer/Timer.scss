@@ -1,33 +1,47 @@
 @import '../../utils/variables';
 
 .timer {
-    .timer_wrapper {
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        top:50%;
-        left:50%;
-        transform:translate(-50%, -50%);
-        .timer_btn {
-            border-radius: 5px;
-            padding: 5px 10px;
-            transition: 1s;
-            &:hover {
-                cursor: pointer;
-                background: $colorBtn;
-                color: $colorTextHoverBtn;
-            }
-        }
-        .timer_img {
-            display: block;
-            margin: 0 auto;
-            width: 70px;
-
-        }
-        .timer_info {
-            text-align: center;
-            margin: 10px 0;
-            font-size: 20px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    &_btn {
+        border-radius: 7px;
+        padding: 10px 15px;
+        transition: 1s all;
+        border: 2px solid $colorFooter;
+        &:hover {
+            cursor: pointer;
+            background: $colorBtn;
+            color: $colorTextHoverBtn;
         }
     }
+    &_btn_active {
+        border-radius: 5px;
+        padding: 10px 15px;
+        transition: 1s all;
+        border: 2px solid $colorFooter;
+        background: $colorBtn;
+        color: $colorTextHoverBtn;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    &_img {
+        display: block;
+        margin: 0 auto;
+        width: 65px;
+
+    }
+    &_info {
+        text-align: center;
+        margin: 10px 0;
+        font-size: 20px;
+    }
+    .btn_wrap {
+        display:flex;
+    }
+
 }

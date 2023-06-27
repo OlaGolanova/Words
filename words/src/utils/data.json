@@ -10,7 +10,7 @@
     {"id":"14000","english":"pain","transcription":"[peɪn]","russian":"боль","tags":"frog_prince","tags_json":"[\"frog_prince\"]"},
     {"id":"14001","english":"bride","transcription":"[braɪd]","russian":"невеста","tags":"frog_prince","tags_json":"[\"frog_prince\"]"},
     {"id":"14002","english":"ability","transcription":"[əˈbɪləti]","russian":"умение, способность","tags":"гарри поттер","tags_json":"[\"u0433u0430u0440u0440u0438 u043fu043eu0442u0442u0435u0440\"]"},
-    {"id":"14010","english":"necessity","transcription":"[nɪˈsesɪtɪ]","russian":"необходимость.","tags":"существительные","tags_json":"[\"u0441u0443u0449u0435u0441u0442u0432u0438u0442u0435u043bu044cu043du044bu0435\"]"},
+    {"id":"14010","english":"necessity","transcription":"[nɪˈsesɪtɪ]","russian":"необходимость","tags":"существительные","tags_json":"[\"u0441u0443u0449u0435u0441u0442u0432u0438u0442u0435u043bu044cu043du044bu0435\"]"},
     {"id":"14011","english":"perform","transcription":"[pəˈfɔːm]","russian":"выполнять","tags":"frog_prince","tags_json":"[\"frog_prince\"]"},
     {"id":"14012","english":"spell","transcription":"[ðiː spel]","russian":"заклинание","tags":"гарри поттер","tags_json":"[\"u0433u0430u0440u0440u0438 u043fu043eu0442u0442u0435u0440\"]"},
     {"id":"14013","english":"cat","transcription":"[kæt]","russian":"кошка","tags":"животные","tags_json":"[\"u0436u0438u0432u043eu0442u043du044bu0435\"]"},

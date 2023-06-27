@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 import data from '../../utils/data.json'; 
-
 import CardItem from '../CardItem/CardItem';
-
 import './Card.scss';
 
 
@@ -20,36 +17,45 @@ export default function Card(props){
     const [ index, setIndex ] = useState(indexCard ? indexCard : 0);
     const [ pressed, setAnimation ] = useState(true);
     const [ colorWord, setColorWord ] = useState('main');
-  
+    const [ innerPressed, setInnerPressed ] = useState(false);
+
 
     const handleChangePrevCard = () => {
+        if (innerPressed) {
+            setInnerPressed(!innerPressed);
+        }
+
         if (index > 0) {
             setIndex(index - 1);
         } else if (index === 0) {
             setIndex(data.length - 1);
         };
-        
         addAnimationCard();
     };
 
     const handleChangeNextCard = () => {
+        if (innerPressed) {
+            setInnerPressed(!innerPressed);
+        }
+
         if (index < data.length - 1) {
             setIndex(index + 1);
         } else if (index === (data.length - 1)){
             setIndex(0);
         };
-      
         addAnimationCard();
     };
 
     function deleteAnimation(){
         setAnimation(pressed);
     };
+
     function addAnimationCard(){
         setColorWord(randomColor);
         setAnimation(!pressed);
         setTimeout(deleteAnimation, 1);
     }
+
 
     return (
         <> 
@@ -68,6 +74,8 @@ export default function Card(props){
                         english = { data[index].english }
                         transcription = { data[index].transcription }
                         russian = { data[index].russian }
+                        pressed = { innerPressed }
+                        setPressed = { setInnerPressed }
                     />
                 </div>
                 <div className = "counter" > { index + 1 } / { data.length }</div>
@@ -80,13 +88,9 @@ export default function Card(props){
                     className = "fa-2x"
                     icon = { faChevronRight }/>
             </button>
-
-         
         </>
     );
 };
   
 
-  
 
-//Для одной карточки со словом
