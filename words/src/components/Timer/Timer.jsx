@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
-import timer from '../../utils/timer.png';
+import timer from '../../utils/1.png';
 
 import './Timer.scss';
 
 export default function Timer(){
 
-    const [ pressedStartTimer, setStartTimer ] = useState('timer_btn');
-    const [ pressedEndTimer, setEndTimer ] = useState('timer_btn');
+    const [ pressedStartTimer, setPressedStartTimer ] = useState('timer_btn');
+    const [ pressedEndTimer, setPressedEndTimer ] = useState('timer_btn');
     const [ minutesOne, setMinutesOne ] = useState(0);
     const [ minutesTwo, setMinutesTwo ] = useState(0);
     const [ secondsOne, setSecondsOne ] = useState(0);
@@ -19,8 +19,8 @@ export default function Timer(){
     let minutesNewOne = minutesOne;
     let minutesNewTwo = minutesTwo;
     const handleStart = () => {
-        setStartTimer('timer_btn_active');
-        setEndTimer('timer_btn');
+        setPressedStartTimer ('timer_btn_active');
+        setPressedEndTimer('timer_btn');
         const timerID = setInterval(function(){  
             if (secondsNewOne === 5 && secondsNewTwo === 9 && minutesNewOne === 5 && minutesNewTwo === 9){
                 clearInterval(timerID);
@@ -56,12 +56,12 @@ export default function Timer(){
 
     const handleEnd = () => {
         if (!timerID) {
-            setEndTimer('timer_btn');
+            setPressedEndTimer('timer_btn');
         }else{
             clearInterval(timerID);
             setTimerID( false );
-            setStartTimer('timer_btn');
-            setEndTimer('timer_btn_active');
+            setPressedStartTimer ('timer_btn');
+            setPressedEndTimer('timer_btn_active');
         }; 
     };
     
