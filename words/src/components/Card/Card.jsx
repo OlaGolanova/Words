@@ -15,7 +15,7 @@ export default function Card(props){
     const randomColor = arrColorWords[rand];
 
     const [ index, setIndex ] = useState(indexCard ? indexCard : 0);
-    const [ pressed, setAnimation ] = useState(true);
+    const [ pressed, setPressed ] = useState(true);
     const [ colorWord, setColorWord ] = useState('main');
     const [ innerPressed, setInnerPressed ] = useState(false);
 
@@ -47,12 +47,12 @@ export default function Card(props){
     };
 
     function deleteAnimation(){
-        setAnimation(pressed);
+        setPressed(pressed);
     };
 
     function addAnimationCard(){
         setColorWord(randomColor);
-        setAnimation(!pressed);
+        setPressed(!pressed);
         setTimeout(deleteAnimation, 1);
     }
 

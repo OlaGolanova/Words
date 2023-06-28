@@ -12,9 +12,9 @@ export default function TableRow(props){
     const {id, index, english, transcription, russian} = props;
 
     const [ pressed, setPressed ] = useState(false);
-    const [editEnglish, setEnglish] = useState(english);
-    const [editTranscription, setTranscription] = useState(transcription);
-    const [editRussian, setRussian] = useState(russian);
+    const [ editEnglish, setEditEnglish ] = useState(english);
+    const [ editTranscription, setEditTranscription ] = useState(transcription);
+    const [ editRussian, setEditRussian ] = useState(russian);
 
     const handleChangeRow = () => {
         setPressed(!pressed);
@@ -47,19 +47,19 @@ export default function TableRow(props){
             <td> 
                 <InputChoice
                     value = { editEnglish }
-                    onEdit = { e => setEnglish(e.target.value) }
+                    onEdit = { e => setEditEnglish(e.target.value) }
                 />
             </td>
             <td> 
                 <InputChoice
                     value = { editTranscription }
-                    onEdit = { e => setTranscription(e.target.value) }
+                    onEdit = { e => setEditTranscription(e.target.value) }
                 />  
             </td>
             <td> 
                 <InputChoice
                     value = { editRussian }
-                    onEdit = { e => setRussian(e.target.value) }
+                    onEdit = { e => setEditRussian(e.target.value) }
                 /> 
             </td>
             <td>
