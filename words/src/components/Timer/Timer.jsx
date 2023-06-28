@@ -21,8 +21,7 @@ export default function Timer(){
     const handleStart = () => {
         setStartTimer('timer_btn_active');
         setEndTimer('timer_btn');
-        
-        const timerID = setInterval(function(){   
+        const timerID = setInterval(function(){  
             if (secondsNewOne === 5 && secondsNewTwo === 9 && minutesNewOne === 5 && minutesNewTwo === 9){
                 clearInterval(timerID);
             }else if (secondsNewOne === 5 && secondsNewTwo === 9 && minutesNewTwo === 9 ){
@@ -51,14 +50,19 @@ export default function Timer(){
                 secondsNewTwo = (secondsNewTwo + 1);
             };
         }, 1000);
-        setTimerID( timerID ); 
+        setTimerID( timerID );
     };
 
+
     const handleEnd = () => {
-        clearInterval(timerID);
-        setTimerID( false );
-        setStartTimer('timer_btn');
-        setEndTimer('timer_btn_active');
+        if (!timerID) {
+            setEndTimer('timer_btn');
+        }else{
+            clearInterval(timerID);
+            setTimerID( false );
+            setStartTimer('timer_btn');
+            setEndTimer('timer_btn_active');
+        }; 
     };
     
     return (
