@@ -12,14 +12,15 @@ export default function Table() {
 
     return (
         <table>
-            <tr className = "tablehead">
-                <th className= "number"></th>
-                <th>Слово</th>
-                <th>Транскрипция</th>
-                <th>Перевод</th>
-                <th></th>
-            </tr>
-          
+            <thead>
+                <tr className = "tablehead">
+                    <th className= "number"></th>
+                    <th>Слово</th>
+                    <th>Транскрипция</th>
+                    <th>Перевод</th>
+                    <th></th>
+                </tr>
+            </thead>
             <tbody>
                 {
                     data.map(function (item,index) {
@@ -33,11 +34,9 @@ export default function Table() {
                         />;
                     })
                 }
-
             </tbody>
         </table>
-    ); 
-    
+    );  
 };
   
 

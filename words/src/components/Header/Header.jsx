@@ -19,7 +19,7 @@ export default  function Header(){
     const search = (
         <>
             <div className = "search" >
-                <FontAwesomeIcon icon={faSearch} /> 
+                <FontAwesomeIcon icon={ faSearch } /> 
             </div>
             <input
                 className = "searchPanel" 

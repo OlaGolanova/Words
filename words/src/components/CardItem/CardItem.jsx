@@ -6,9 +6,9 @@ export default function CardItem(props){
     const {
         id, 
         color, 
-        english = 'loading', 
-        transcription = 'ˈləʊdɪŋ', 
-        russian ='загрузка', 
+        english, 
+        transcription, 
+        russian, 
         pressed, 
         setPressed 
     } = props;
@@ -39,3 +39,8 @@ export default function CardItem(props){
     );
 };
   
+CardItem.defaultProps = {
+    english: 'loading', 
+    transcription: 'ˈləʊdɪŋ', 
+    russian: 'загрузка'
+};

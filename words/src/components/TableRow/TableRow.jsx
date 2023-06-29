@@ -82,3 +82,8 @@ export default function TableRow(props){
             
 };
 
+TableRow.defaultProps = {
+    english: 'loading', 
+    transcription: 'ˈləʊdɪŋ', 
+    russian: 'загрузка'
+};

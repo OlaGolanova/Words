@@ -10,6 +10,7 @@ import './Card.scss';
 
 export default function Card(props){
     const { indexCard } = props;
+
     const arrColorWords = [ 'red', 'orange', 'yellow', 'green', 'blue', 'main', 'violet' ];
     const rand = Math.floor(Math.random()*arrColorWords.length);
     const randomColor = arrColorWords[rand];
