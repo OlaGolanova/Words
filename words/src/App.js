@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './App.scss';
 import Header from './components/Header/Header';
@@ -12,16 +12,12 @@ import Card from './components/Card/Card';
 export default function App() {
 
     return (
-        <>
+        <div className = "app">
             <Header />
-            <div className = "app">
-                <Table />
-                <Card/>
-            </div>
+            <Table />
+            <Card />
             <Footer />
-        </>
-       
+        </div>
     );
 };
 
- 

@@ -1,7 +1,9 @@
 @import '../../utils/variables';
 
-
-.button {
+.card{
+  display: flex;
+  justify-content: center;
+  .button {
     width: 100px;
     height: 75vh;
     border: none;
@@ -33,43 +35,45 @@
     }
 
 }
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    .cardItem {
-        transition: all 1.5s;
-        transform: scale(1);
-        opacity: 1;
-        .red {
-            color:#c31d1d;
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        .cardItem {
+            transition: all 1.5s;
+            transform: scale(1);
+            opacity: 1;
+            .red {
+                color:#c31d1d;
+            }
+            .green {
+                color:#008000;
+            }
+            .orange {
+                color: #ffa500;
+            }
+            .yellow {
+                color: #949813;
+            }
+            .blue {
+                color: #004cff;
+            }
+            .violet {
+                color: #ee82ee;
+            }
+            .main {
+                color: $colorEnglishWord;
+            }
         }
-        .green {
-            color:#008000;
+        .animation {
+            transform: scale(0.5);
+            opacity: 0;
         }
-        .orange {
-            color: #ffa500;
+        .counter {
+            align-self: center;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            font-size: 25px;
         }
-        .yellow {
-            color: #949813;
-        }
-        .blue {
-            color: #004cff;
-        }
-        .violet {
-            color: #ee82ee;
-        }
-        .main {
-            color: $colorEnglishWord;
-        }
-    }
-    .animation {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    .counter {
-        align-self: center;
-        margin-top: 50px;
-        margin-bottom: 50px;
-        font-size: 25px;
     }
 }
+

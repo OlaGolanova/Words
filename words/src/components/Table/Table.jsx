@@ -1,45 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import data from '../../utils/data.json'; 
-
+import words from '../../utils/words.json'; 
 import TableRow from '../TableRow/TableRow';
-
 import './Table.scss';
 
 
 
 export default function Table() {
 
+
     return (
-        <table>
-            <thead>
-                <tr className = "tablehead">
-                    <th className= "number"></th>
-                    <th>Слово</th>
-                    <th>Транскрипция</th>
-                    <th>Перевод</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    data.map(function (item,index) {
-                        return  <TableRow
-                            choice = {item.choice}
-                            key={ item.id }
-                            index = {index}
-                            english = { item.english }
-                            transcription = { item.transcription }
-                            russian = { item.russian }
-                        />;
-                    })
-                }
-            </tbody>
-        </table>
+        <div className="table">
+            <table>
+                <thead>
+                    <tr className = "tablehead">
+                        <th className= "number"></th>
+                        <th>Слово</th>
+                        <th>Транскрипция</th>
+                        <th>Перевод</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        words.map(function (word,index) {
+                            return  <TableRow
+                                choice = { word.choice }
+                                key={ word.id }
+                                index = { index }
+                                english = { word.english }
+                                transcription = { word.transcription }
+                                russian = { word.russian }
+                                onDelete = { id => console.log( word.id) }
+                            />;
+                        })
+                    }
+                </tbody>
+            </table>
+        </div>
+    
     );  
-};
+}
   
-
-  
-
-//Для списка слов

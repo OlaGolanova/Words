@@ -9,7 +9,7 @@ import './TableRow.scss';
 
 
 export default function TableRow(props){
-    const {id, index, english, transcription, russian} = props;
+    const {id, index, english, transcription, russian, onDelete} = props;
 
     const [ pressed, setPressed ] = useState(false);
     const [ editEnglish, setEditEnglish ] = useState(english);
@@ -23,7 +23,7 @@ export default function TableRow(props){
     
     const row = (
         <tr key = { id }>
-            <td> { index+1 } </td>
+            <td> { index + 1 } </td>
             <td> { english } </td>
             <td> { transcription } </td>
             <td> { russian } </td>
@@ -33,7 +33,9 @@ export default function TableRow(props){
                     onClick = { handleChangeRow }>
                     <FontAwesomeIcon icon = { faPen } />
                 </button>
-                <button className = "trash" >
+                <button 
+                    className = "trash"
+                    onClick = { onDelete }>
                     <FontAwesomeIcon icon = { faTrash } />
                 </button>
             </td>

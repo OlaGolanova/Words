@@ -11,11 +11,18 @@ import './Header.scss';
   
 export default  function Header(){
     const [ pressed, setPressed ] = useState(true);
-
+    const [ value, setValue ] = useState('');
+   
     const handleChangeBtn = () => {
         setPressed(!pressed);
     };
-    
+
+    const handleChangeValue = (event) => {
+        setValue(event.target.value);
+      
+    };
+    console.log( value.toLowerCase() );
+
     const search = (
         <>
             <div className = "search" >
@@ -25,7 +32,7 @@ export default  function Header(){
                 className = "searchPanel" 
                 type="text"
                 placeholder="Введите слово" 
-                onChange = { (event) => console.log(event.target.value) }
+                onChange = { handleChangeValue }
             />
         </>
                 

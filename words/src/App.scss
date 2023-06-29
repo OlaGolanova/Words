@@ -1,13 +1,6 @@
 @import './utils/variables';
 
-.app{
-  display: flex;
-  justify-content: center;
+.app {
   background: $colorMain;
-  padding: 0 200px 0 200px;
-  min-height: 75vh;
-
-  @media (max-width: 991px) {
-    padding: 0 30px 0 30px;
-  }
+  
 }

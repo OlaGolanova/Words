@@ -31,7 +31,7 @@ export default function CardItem(props){
     );
 
     return (
-        <div className = "card"   key = { id }>
+        <div className = "card_item"   key = { id }>
             <div className = {`englishWord ${color}`}  >{ english }</div>
             <div className = "transcription" >{ transcription }</div>
             <> { pressed ? sideBtnFlip : sideBtnFront } </>
