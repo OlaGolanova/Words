@@ -16,7 +16,7 @@ export default function App() {
             <Header />
             <div className = "app">
                 <Table />
-                {/* <Card/> */}
+                <Card/>
             </div>
             <Footer />
         </>
