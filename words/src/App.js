@@ -1,4 +1,9 @@
 import React, { useState } from 'react';
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Link }from 'react-router-dom';
 
 import './App.scss';
 import Header from './components/Header/Header';
@@ -11,16 +16,23 @@ import NotFound from './components/NotFound/NotFound';
 
 
 
+
 export default function App() {
 
     return (
-        <div className = "app">
-            <Header />
-            <Table />
-            <Card />
-            <NotFound />
-            <Footer />
-        </div>
+        <Router>
+            <div className = "app">
+                <Header />
+                <Routes>
+                    <Route path="/" element={ <Table />}/>
+                    <Route path="/cards" element={<Card /> }/>
+                    <Route path="*" element={ <NotFound /> }/>
+                </Routes>
+                <Footer />
+            </div>
+        </Router>
     );
 };
+
+
 

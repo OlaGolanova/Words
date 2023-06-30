@@ -458,6 +458,8 @@ export default function NotFound() {
                     <div className="shelf__handle_front"></div>
                     <div className="shelf__handle_right"></div>
                 </div>
+                
+                
                 <div className="layer-1 shadow"></div>
                 <div className="layer-2 numbers">
                     <div className="numbers__item numbers__item_1">4</div>

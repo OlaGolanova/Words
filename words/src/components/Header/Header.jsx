@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -10,11 +11,26 @@ import './Header.scss';
 
   
 export default  function Header(){
-    const [ pressed, setPressed ] = useState(true);
+    const [ pressedCardBtn, setPressedCardBtn ] = useState(false);
+    const [ pressedTableBtn, setPressedTableBtn ] = useState(true);
     const [ value, setValue ] = useState('');
    
-    const handleChangeBtn = () => {
-        setPressed(!pressed);
+    const handleChangeCardBtn = () => {
+        if (!pressedCardBtn){
+            setPressedCardBtn(!pressedCardBtn);
+        };
+        if(pressedTableBtn) {
+            setPressedTableBtn(!pressedTableBtn);
+        };
+     
+    };
+    const handleChangeTableBtn = () => {
+        if(!pressedTableBtn){
+            setPressedTableBtn(!pressedTableBtn);
+        };
+        if(pressedCardBtn){
+            setPressedCardBtn(!pressedCardBtn);
+        }    
     };
 
     const handleChangeValue = (event) => {
@@ -34,15 +50,26 @@ export default  function Header(){
                 placeholder="Введите слово" 
                 onChange = { handleChangeValue }
             />
-        </>
-                
+        </>         
     );
 
     return (
         <header>
             <div className = "header" >
+                <nav>
+                    <li onClick = { handleChangeTableBtn }>
+                        <Link
+                            className = "link"
+                            to="/">Список слов</Link>
+                    </li>
+                    <li onClick = { handleChangeCardBtn }>
+                        <Link
+                            className = "link" 
+                            to="/cards">Режим тренировки</Link>
+                    </li>
+                </nav>
                 <CSSTransition
-                    in={ pressed }
+                    in={ pressedTableBtn }
                     timeout={300}
                     classNames="alert"
                     unmountOnExit>
@@ -50,14 +77,9 @@ export default  function Header(){
                         { search }  
                     </form>
                 </CSSTransition>
-                <button 
-                    className = "header_btn"
-                    onClick = { handleChangeBtn}>
-                    { pressed ? 'Режим Тренировки' : 'Список слов'}  
-                </button>
             </div>
             <CSSTransition
-                in={ !pressed }
+                in={ pressedCardBtn }
                 timeout={300}
                 classNames="alert"
                 unmountOnExit>
@@ -65,7 +87,14 @@ export default  function Header(){
                     <Timer />
                 </div>
             </CSSTransition> 
-            <img src={logo} className = "logo" alt="logo" />
+            <Link to="/">
+                <img 
+                    src={logo} 
+                    className = "logo" 
+                    alt="logo"
+                    onClick = { handleChangeTableBtn } />
+            </Link>
+          
         </header>
     );
 };

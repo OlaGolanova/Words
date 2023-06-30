@@ -9,16 +9,65 @@ header {
     background: $colorHeader;
     padding: 50px 200px 50px 200px;
     .header {
-      display: flex;
-      flex-direction: column;
+        padding-top: 30px;
     }
+    nav {
+        display: flex;
+        li {
+            list-style-type: none;
+            margin-right: 30px;
+            &:last-child {
+                margin-right: 0;
+            }
+            .link{
+                position: relative;
+                color: $colorText;
+                text-decoration: none;
+                font-weight: 500;
+                line-height: 1;
+                &::after {
+                    display: block;
+                    position:absolute;
+                    top: 24px;
+                    left:0;
+                    width: 60%;
+                    height: 1px;
+                    background-color: $colorText;
+                    content: "";
+                    transition: width 0.3s ease-out;
+                    &:hover {
+                        cursor: pointer;
+                        opacity: 0.8;
+                    }
+                }
+                &:hover {
+                    cursor: pointer;
+                    opacity: 0.9;
+                    &:after {
+                        width: 0;
+                    }
+                &:focus {
+                    cursor: pointer;
+                    opacity: 0.9;
+                    &:after {
+                        width: 0;
+                    }
+              
+                }
+               
+            }  
+        }
+     }
+  }
+    
+   
     .form {
-      margin-top: 120px;
+      margin-top: 80px;
       position: relative;
       text-align: left;
   
       .searchPanel {
-          width: 250px;
+          width: 340px;
           height: 44px;
           border-radius: 10px;
           border: 2px solid $colorFooter;
@@ -52,24 +101,8 @@ header {
           left: 10px;      }
   
   }
-    .header_btn {
-      position: absolute;
-      width: 250px;
-      height: 44px;
-      top: 75px;
-      border-radius: 10px;
-      background: $colorBtn;
-      border: 2px solid $colorBtn;
-      color: $colorFooter;
-      text-transform: uppercase;
-      transition: 1s;
-      &:hover {
-          cursor: pointer;
-          background: $colorBtntHover;
-          color: $colorTextHoverBtn;
-       }
-    }
     .logo {
+      padding-top: 10px;
       width: 170px;
       &:hover{
         cursor: pointer;
@@ -101,8 +134,5 @@ header {
       opacity: 0;
       transform: scale(0.9);
       transition: opacity 300ms, transform 300ms;
-    }
-    
+    }   
 }
-
-
