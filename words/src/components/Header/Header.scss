@@ -18,8 +18,8 @@ header {
       text-align: left;
   
       .searchPanel {
-          width: 200px;
-          height: 40px;
+          width: 250px;
+          height: 44px;
           border-radius: 10px;
           border: 2px solid $colorFooter;
           color: $colorText;
@@ -71,6 +71,9 @@ header {
     }
     .logo {
       width: 170px;
+      &:hover{
+        cursor: pointer;
+      }
 
       @media (max-width: 991px) {
         width: 130px;
@@ -100,8 +103,6 @@ header {
       transition: opacity 300ms, transform 300ms;
     }
     
-   
-   
 }
 
 

@@ -1,7 +1,8 @@
 @import './utils/variables';
-// * {
-//   outline: 2px solid red;
-// }
+* {
+  // outline: 2px solid red;
+  box-sizing: border-box;
+}
 body {
   min-height: 100vh;
   margin: 0;
