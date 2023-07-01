@@ -78,7 +78,7 @@ export default function TableRow(props){
         </tr>      
     );
 
-    return (
+    return(
         pressed ? rowChoice : row
     );
             
