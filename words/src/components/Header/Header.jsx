@@ -11,9 +11,9 @@ import './Header.scss';
 
   
 export default  function Header(){
-    const [ pressedCardBtn, setPressedCardBtn ] = useState(false);
-    const [ pressedTableBtn, setPressedTableBtn ] = useState(true);
-    const [ value, setValue ] = useState('');
+    const [pressedCardBtn, setPressedCardBtn] = useState(false);
+    const [pressedTableBtn, setPressedTableBtn] = useState(true);
+    const [value, setValue] = useState('');
    
     const handleChangeCardBtn = () => {
         if (!pressedCardBtn){
@@ -60,12 +60,12 @@ export default  function Header(){
                     <li onClick = { handleChangeTableBtn }>
                         <Link
                             className = "link"
-                            to="/">Список слов</Link>
+                            to="/Words">Список слов</Link>
                     </li>
                     <li onClick = { handleChangeCardBtn }>
                         <Link
                             className = "link" 
-                            to="/cards">Режим тренировки</Link>
+                            to="/Words/training">Режим тренировки</Link>
                     </li>
                 </nav>
                 <CSSTransition
@@ -87,14 +87,13 @@ export default  function Header(){
                     <Timer />
                 </div>
             </CSSTransition> 
-            <Link to="/">
+            <Link to="/Words">
                 <img 
                     src={logo} 
                     className = "logo" 
                     alt="logo"
                     onClick = { handleChangeTableBtn } />
             </Link>
-          
         </header>
     );
 };

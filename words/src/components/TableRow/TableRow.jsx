@@ -11,10 +11,10 @@ import './TableRow.scss';
 export default function TableRow(props){
     const {id, index, english, transcription, russian, onDelete} = props;
 
-    const [ pressed, setPressed ] = useState(false);
-    const [ editEnglish, setEditEnglish ] = useState(english);
-    const [ editTranscription, setEditTranscription ] = useState(transcription);
-    const [ editRussian, setEditRussian ] = useState(russian);
+    const [pressed, setPressed] = useState(false);
+    const [editEnglish, setEditEnglish] = useState(english);
+    const [editTranscription, setEditTranscription] = useState(transcription);
+    const [editRussian, setEditRussian] = useState(russian);
 
     const handleChangeRow = () => {
         setPressed(!pressed);

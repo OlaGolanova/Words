@@ -1,10 +1,10 @@
 import React from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 import './CardItem.scss';
 
 export default function CardItem(props){
-    const {
-        id, 
+    const { id,
         color, 
         english, 
         transcription, 
@@ -12,7 +12,8 @@ export default function CardItem(props){
         pressed, 
         setPressed 
     } = props;
-   
+
+
     const handleChange = () => {
         setPressed(!pressed);
     };
@@ -20,7 +21,7 @@ export default function CardItem(props){
     const sideBtnFront = (
         <button 
             className = "button_check"  
-            onClick = { handleChange }> Проверить </button>  
+            onClick = { handleChange }> Проверить </button> 
     ); 
 
     const sideBtnFlip = (

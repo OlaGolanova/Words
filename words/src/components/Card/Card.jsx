@@ -15,10 +15,10 @@ export default function Card(props){
     const rand = Math.floor(Math.random()*arrColorWords.length);
     const randomColor = arrColorWords[rand];
 
-    const [ index, setIndex ] = useState(indexCard ? indexCard : 0);
-    const [ pressed, setPressed ] = useState(true);
-    const [ colorWord, setColorWord ] = useState('main');
-    const [ innerPressed, setInnerPressed ] = useState(false);
+    const [index, setIndex] = useState(indexCard ? indexCard : 0);
+    const [pressed, setPressed] = useState(true);
+    const [colorWord, setColorWord] = useState('main');
+    const [innerPressed, setInnerPressed] = useState(false);
 
 
     const handleChangePrevCard = () => {

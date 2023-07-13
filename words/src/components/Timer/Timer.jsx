@@ -6,13 +6,13 @@ import './Timer.scss';
 
 export default function Timer(){
 
-    const [ pressedStartTimer, setPressedStartTimer ] = useState('timer_btn');
-    const [ pressedEndTimer, setPressedEndTimer ] = useState('timer_btn');
-    const [ minutesOne, setMinutesOne ] = useState(0);
-    const [ minutesTwo, setMinutesTwo ] = useState(0);
-    const [ secondsOne, setSecondsOne ] = useState(0);
-    const [ secondsTwo, setSecondsTwo ] = useState(0);
-    const [ timerID, setTimerID ] = useState(false);
+    const [pressedStartTimer, setPressedStartTimer] = useState('timer_btn');
+    const [pressedEndTimer, setPressedEndTimer] = useState('timer_btn');
+    const [minutesOne, setMinutesOne] = useState(0);
+    const [minutesTwo, setMinutesTwo] = useState(0);
+    const [secondsOne, setSecondsOne] = useState(0);
+    const [secondsTwo, setSecondsTwo] = useState(0);
+    const [timerID, setTimerID] = useState(false);
 
     let secondsNewOne = secondsOne;
     let secondsNewTwo = secondsTwo;

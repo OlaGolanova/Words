@@ -4,7 +4,7 @@ import './InputChoice.scss';
 
 export default function InputChoice(props) {
 
-    const { value, onEdit } = props;
+    const {value, onEdit} = props;
 
     return ( 
         <form action="">
