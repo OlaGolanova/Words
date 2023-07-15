@@ -19,24 +19,30 @@ export default function Card(props){
     const [colorWord, setColorWord] = useState('main');
     const [innerPressed, setInnerPressed] = useState(false);
     let { cardName }  = useParams();
-    let link;
-    
-    console.log(cardName);
+
+    const [link, setLink] = useState(words[index].english);
+
+    cardName = link;
     console.log(link);
+    console.log(cardName);
     const handleChangePrevCard = () => {
         if (innerPressed) {
             setInnerPressed(!innerPressed);
         }
         if (index > 0) {
-            link = words[index - 1].english;
+            const link = words[index - 1].english;
+            cardName = link;
+            setLink(link);
             setIndex(index - 1);
         } else if (index === 0) {
-            link = words[(words.length - 1)].english;
+            const link = words[(words.length - 1)].english;
+            cardName = link;
+            setLink(link);
             setIndex(words.length - 1);
         };
         addAnimationCard();
-        cardName = link;
-        console.log(link);
+       
+        // console.log(link);
         console.log(cardName);
     };
 
@@ -46,18 +52,23 @@ export default function Card(props){
         }
 
         if (index < words.length - 1) {
-            link = words[index + 1].english;
+            const link = words[index + 1].english;
+            cardName = link;
+            setLink(link);
             setIndex(index + 1);
           
         } else if (index === (words.length - 1)){
-            link = words[0].english;
+            const link = words[0].english;
+            cardName = link;
+            setLink(link);
             setIndex(0);
           
         };
         addAnimationCard();
-        cardName = link;
-        console.log(link);
+
+        // console.log(link);
         console.log(cardName);
+
     };
 
     function deleteAnimation(){
