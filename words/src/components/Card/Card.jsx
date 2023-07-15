@@ -18,20 +18,25 @@ export default function Card(props){
     const [pressed, setPressed] = useState(true);
     const [colorWord, setColorWord] = useState('main');
     const [innerPressed, setInnerPressed] = useState(false);
-    let { cardName } = useParams();
-    cardName = words[index].english;
-  
+    let { cardName }  = useParams();
+    let link;
+    
+    console.log(cardName);
+    console.log(link);
     const handleChangePrevCard = () => {
-   
         if (innerPressed) {
             setInnerPressed(!innerPressed);
         }
         if (index > 0) {
+            link = words[index - 1].english;
             setIndex(index - 1);
         } else if (index === 0) {
+            link = words[(words.length - 1)].english;
             setIndex(words.length - 1);
         };
         addAnimationCard();
+        cardName = link;
+        console.log(link);
         console.log(cardName);
     };
 
@@ -41,12 +46,17 @@ export default function Card(props){
         }
 
         if (index < words.length - 1) {
+            link = words[index + 1].english;
             setIndex(index + 1);
           
         } else if (index === (words.length - 1)){
+            link = words[0].english;
             setIndex(0);
+          
         };
         addAnimationCard();
+        cardName = link;
+        console.log(link);
         console.log(cardName);
     };
 
