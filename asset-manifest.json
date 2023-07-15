@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Words/static/css/main.69bf2b2c.css",
-    "main.js": "/Words/static/js/main.60b85169.js",
+    "main.js": "/Words/static/js/main.33c87620.js",
     "static/media/1.png": "/Words/static/media/1.e444034845d7423a69a3.png",
     "static/media/logo1.png": "/Words/static/media/logo1.027232f727f4a8bbda14.png",
     "index.html": "/Words/index.html",
     "main.69bf2b2c.css.map": "/Words/static/css/main.69bf2b2c.css.map",
-    "main.60b85169.js.map": "/Words/static/js/main.60b85169.js.map"
+    "main.33c87620.js.map": "/Words/static/js/main.33c87620.js.map"
   },
   "entrypoints": [
     "static/css/main.69bf2b2c.css",
-    "static/js/main.60b85169.js"
+    "static/js/main.33c87620.js"
   ]
 }
