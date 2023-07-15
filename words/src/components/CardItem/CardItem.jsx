@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+
 
 import './CardItem.scss';
 
@@ -10,9 +10,9 @@ export default function CardItem(props){
         transcription, 
         russian, 
         pressed, 
-        setPressed 
+        setPressed
     } = props;
-
+ 
 
     const handleChange = () => {
         setPressed(!pressed);
@@ -32,16 +32,17 @@ export default function CardItem(props){
     );
 
     return (
+
         <div className = "card_item"   key = { id }>
-            <div className = {`englishWord ${color}`}  >{ english }</div>
+            <div className = {`englishWord ${color}`}>{ english }</div>
             <div className = "transcription" >{ transcription }</div>
             <> { pressed ? sideBtnFlip : sideBtnFront } </>
         </div>
+      
     );
 };
   
 CardItem.defaultProps = {
     english: 'loading', 
-    transcription: 'ˈləʊdɪŋ', 
     russian: 'загрузка'
 };

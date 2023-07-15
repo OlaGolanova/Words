@@ -24,9 +24,9 @@ export default function App() {
                 <Header />
                 <Routes>
                     <Route  path="/Words" exact element={ <Table />}/>
-                    <Route  path="/Words:id" exact element={ <Table />}/>
+                    {/* <Route  path="/Words:id" exact element={ <Table />}/> */}
                     <Route  path="/Words/training/" element={<Card /> }/>
-                    <Route  path="/Words/training/:id" element={<Card /> }/>
+                    <Route  path="/Words/training/:cardName" element={<Card /> }/>
                     <Route  path="*" element={ <NotFound /> }/>
                 </Routes>
                 <Footer />
