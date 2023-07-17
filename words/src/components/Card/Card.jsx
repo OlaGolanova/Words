@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams, Link} from 'react-router-dom';
+import { useParams, Link, useLocation} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
@@ -19,7 +19,6 @@ export default function Card(props){
     const [colorWord, setColorWord] = useState('main');
     const [innerPressed, setInnerPressed] = useState(false);
     let { cardName }  = useParams();
-
     const [link, setLink] = useState(words[index].english);
 
     cardName = link;
@@ -84,7 +83,7 @@ export default function Card(props){
 
     return (
         <div className="card"> 
-            <Link to={ cardName }>
+            <Link to={`/Words/training/${cardName}`}>
                 <button 
                     className = "button"
                     onClick = { handleChangePrevCard }>
@@ -109,7 +108,7 @@ export default function Card(props){
                 <div className = "counter" > { index + 1 } / { words.length }</div>
             </div>
 
-            <Link to={ cardName }>
+            <Link to={`/Words/training/${cardName}`}>
                 <button 
                     className = "button"
                     onClick = { handleChangeNextCard } >

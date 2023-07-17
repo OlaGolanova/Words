@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { CSSTransition } from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faClose } from '@fortawesome/free-solid-svg-icons';
+
 
 import words from '../../utils/words.json'; 
 import TableRow from '../TableRow/TableRow';
@@ -69,7 +71,6 @@ export default function Table() {
                 </tbody>
             </table>
         </div>
-    
     );  
 }
   
