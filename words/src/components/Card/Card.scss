@@ -1,6 +1,6 @@
 @import '../../utils/variables';
 
-.card{
+.card {
   display: flex;
   justify-content: center;
   .button {
@@ -38,6 +38,13 @@
     .wrapper {
         display: flex;
         flex-direction: column;
+        align-self: center;
+        .openCard {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            align-self:center;
+        
+        }
         .cardItem {
             transition: all 1.5s;
             transform: scale(1);
@@ -75,5 +82,9 @@
             font-size: 25px;
         }
     }
+    @media (max-width: 660px) {
+ 
+      }
+
 }
 

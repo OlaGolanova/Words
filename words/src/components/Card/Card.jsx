@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import { useParams, Link, useLocation} from 'react-router-dom';
+import React, { useState, forwardRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 import words from '../../utils/words.json'; 
 import CardItem from '../CardItem/CardItem';
+
+
 import './Card.scss';
 
-
-
-export default function Card(props){
+const Card = forwardRef((props, ref) => {
     const { indexCard } = props;
     const arrColorWords = [ 'red', 'orange', 'yellow', 'green', 'blue', 'main', 'violet' ];
     const rand = Math.floor(Math.random()*arrColorWords.length);
@@ -18,31 +17,23 @@ export default function Card(props){
     const [pressed, setPressed] = useState(true);
     const [colorWord, setColorWord] = useState('main');
     const [innerPressed, setInnerPressed] = useState(false);
-    let { cardName }  = useParams();
-    const [link, setLink] = useState(words[index].english);
+    const [openCard, setOpenCard] = useState(0);
 
-    cardName = link;
-    console.log(link);
-    console.log(cardName);
+
+
     const handleChangePrevCard = () => {
         if (innerPressed) {
             setInnerPressed(!innerPressed);
         }
         if (index > 0) {
-            const link = words[index - 1].english;
-            cardName = link;
-            setLink(link);
             setIndex(index - 1);
+
         } else if (index === 0) {
-            const link = words[(words.length - 1)].english;
-            cardName = link;
-            setLink(link);
             setIndex(words.length - 1);
+
         };
         addAnimationCard();
-       
-        // console.log(link);
-        console.log(cardName);
+
     };
 
     const handleChangeNextCard = () => {
@@ -51,22 +42,13 @@ export default function Card(props){
         }
 
         if (index < words.length - 1) {
-            const link = words[index + 1].english;
-            cardName = link;
-            setLink(link);
             setIndex(index + 1);
           
         } else if (index === (words.length - 1)){
-            const link = words[0].english;
-            cardName = link;
-            setLink(link);
             setIndex(0);
           
         };
         addAnimationCard();
-
-        // console.log(link);
-        console.log(cardName);
 
     };
 
@@ -82,19 +64,18 @@ export default function Card(props){
 
 
     return (
+       
         <div className="card"> 
-            <Link to={`/Words/training/${cardName}`}>
-                <button 
-                    className = "button"
-                    onClick = { handleChangePrevCard }>
-                    <FontAwesomeIcon
-                        className = "fa-2x"
-                        icon = { faChevronLeft }/>
-                </button>
-            </Link>
-            
+            <button 
+                className = "button"
+                onClick = { handleChangePrevCard }>
+                <FontAwesomeIcon
+                    className = "fa-2x"
+                    icon = { faChevronLeft }/>
+            </button>
 
             <div className = "wrapper">
+                <div className= "openCard">Проверено слов: {openCard}</div>
                 <div className = { pressed ? 'cardItem' : 'animation' }>
                     <CardItem
                         color = { colorWord }
@@ -103,24 +84,31 @@ export default function Card(props){
                         russian = { words[index].russian }
                         pressed = { innerPressed }
                         setPressed = { setInnerPressed }
-                    />
+                        openCard = { openCard }
+                        setOpenCard = { setOpenCard }
+                        ref = {ref}
+                    /> 
                 </div>
                 <div className = "counter" > { index + 1 } / { words.length }</div>
             </div>
 
-            <Link to={`/Words/training/${cardName}`}>
-                <button 
-                    className = "button"
-                    onClick = { handleChangeNextCard } >
-                    <FontAwesomeIcon
-                        className = "fa-2x"
-                        icon = { faChevronRight }/>
-                </button>
-            </Link>
-            
+            <button 
+                className = "button"
+                onClick = { handleChangeNextCard } >
+                <FontAwesomeIcon
+                    className = "fa-2x"
+                    icon = { faChevronRight }/>
+            </button>
         </div>
+       
+           
     );
-};
+} 
+);
+
+// Card.displayName = 'Card';
+
+export default Card;
   
 
 

@@ -1,138 +1,143 @@
 @import '../../utils/variables';
 
-
-header {
+.header_wrapper {
     position: relative;
+    min-height: 300px;
+
+    header {
+    position: fixed;
+    z-index: 1;
     display: flex;
     justify-content: space-between;
-    min-height: 100px;
+    min-height: 300px;
+    width: 100%;
     background: $colorHeader;
     padding: 50px 200px 50px 200px;
-    .header {
-        padding-top: 30px;
-    }
-    nav {
-        display: flex;
-        li {
-            list-style-type: none;
-            margin-right: 30px;
-            &:last-child {
-                margin-right: 0;
-            }
-            .link{
-                position: relative;
-                color: $colorText;
-                text-decoration: none;
-                font-weight: 500;
-                line-height: 1;
-                &::after {
-                    display: block;
-                    position:absolute;
-                    top: 24px;
-                    left:0;
-                    width: 60%;
-                    height: 1px;
-                    background-color: $colorText;
-                    content: "";
-                    transition: width 0.3s ease-out;
+        .header {
+            padding-top: 30px;
+            nav {
+
+            display: flex;
+            li {
+                list-style-type: none;
+                margin-right: 30px;
+                &:last-child {
+                    margin-right: 0;
+                }
+                .link{
+                    position: relative;
+                    color: $colorText;
+                    text-decoration: none;
+                    font-weight: 500;
+                    line-height: 1;
+                    &::after {
+                        display: block;
+                        position:absolute;
+                        top: 24px;
+                        left:0;
+                        width: 60%;
+                        height: 1px;
+                        background-color: $colorText;
+                        content: "";
+                        transition: width 0.3s ease-out;
+                        &:hover {
+                            cursor: pointer;
+                            opacity: 0.8;
+                        }
+                    }
                     &:hover {
                         cursor: pointer;
-                        opacity: 0.8;
+                        opacity: 0.9;
+                        &:after {
+                            width: 0;
+                        }
+                    &:focus {
+                        cursor: pointer;
+                        opacity: 0.9;
+                        &:after {
+                            width: 0;
+                        }
+                    
                     }
+                    
+                }  
+            }
+        }
+        }
+        .form {
+            margin-top: 80px;
+            position: relative;
+            text-align: left;
+        
+            .searchPanel {
+                width: 300px;
+                height: 44px;
+                border-radius: 10px;
+                border: 2px solid $colorFooter;
+                color: $colorText;
+                padding-left: 50px;
+                background-color: $colorIntoInput; 
+                font-size: $fontSizeTable;
+                font-family: $fontMain;
+            
+                &:active {
+                    outline: 0;
+                    outline-offset: 0;
                 }
                 &:hover {
-                    cursor: pointer;
-                    opacity: 0.9;
-                    &:after {
-                        width: 0;
-                    }
-                &:focus {
-                    cursor: pointer;
-                    opacity: 0.9;
-                    &:after {
-                        width: 0;
-                    }
-              
+                    outline: 0;
+                    outline-offset: 0;
                 }
-               
-            }  
-        }
-     }
-  }
-    
-   
-    .form {
-      margin-top: 80px;
-      position: relative;
-      text-align: left;
-  
-      .searchPanel {
-          width: 300px;
-          height: 44px;
-          border-radius: 10px;
-          border: 2px solid $colorFooter;
-          color: $colorText;
-          padding-left: 50px;
-          background-color: $colorIntoInput; 
-          font-size: $fontSizeTable;
-          font-family: $fontMain;
-       
-          &:active {
-              outline: 0;
-              outline-offset: 0;
-          }
-          &:hover {
-              outline: 0;
-              outline-offset: 0;
-          }
-          &:focus {
-              outline: 0;
-              outline-offset: 0;
-          }
-          &::placeholder {
-              color: $colorMain;
-              text-transform: uppercase;
-              font-size: 14px;
+                &:focus {
+                    outline: 0;
+                    outline-offset: 0;
+                }
+                &::placeholder {
+                    color: $colorMain;
+                    text-transform: uppercase;
+                    font-size: 14px;
+                }
             }
-      }
-      .search{
-          position: absolute;
-          top: 15px;
-          left: 10px;      }
-  
-  }
-    .logo {
-      padding-top: 10px;
-      width: 170px;
-      &:hover{
-        cursor: pointer;
-      }
+            .search{
+                position: absolute;
+                top: 15px;
+                left: 10px;      }
+        }
+        }
+        
+        .logo {
+        padding-top: 10px;
+        width: 170px;
+        &:hover{
+            cursor: pointer;
+        }
 
-      @media (max-width: 991px) {
-        width: 130px;
-        height: 130px;
-      }
-    }
-   
-    @media (max-width: 991px) {
-        padding: 30px;
-      }
+        @media (max-width: 991px) {
+            width: 130px;
+            height: 130px;
+        }
+        }
+    
+        @media (max-width: 991px) {
+            padding: 30px;
+        }
 
-    .alert-enter {
-      opacity: 0;
-      transform: scale(0.9);
-    } 
-    .alert-enter-active {
-      opacity: 1;
-      transform: translateX(0);
-      transition: opacity 300ms, transform 300ms;
-    }
-    .alert-exit {
-      opacity: 1;
-    }
-    .alert-exit-active {
-      opacity: 0;
-      transform: scale(0.9);
-      transition: opacity 300ms, transform 300ms;
-    }   
+        .alert-enter {
+        opacity: 0;
+        transform: scale(0.9);
+        } 
+        .alert-enter-active {
+        opacity: 1;
+        transform: translateX(0);
+        transition: opacity 300ms, transform 300ms;
+        }
+        .alert-exit {
+        opacity: 1;
+        }
+        .alert-exit-active {
+        opacity: 0;
+        transform: scale(0.9);
+        transition: opacity 300ms, transform 300ms;
+        } 
+    }  
 }

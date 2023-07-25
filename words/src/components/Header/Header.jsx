@@ -54,47 +54,50 @@ export default  function Header(){
     );
 
     return (
-        <header>
-            <div className = "header" >
-                <nav>
-                    <li onClick = { handleChangeTableBtn }>
-                        <Link
-                            className = "link"
-                            to="/Words">Список слов</Link>
-                    </li>
-                    <li onClick = { handleChangeCardBtn }>
-                        <Link
-                            className = "link" 
-                            to="/Words/training">Режим тренировки</Link>
-                    </li>
-                </nav>
+        <div className="header_wrapper">
+            <header>
+                <div className = "header" >
+                    <nav>
+                        <li onClick = { handleChangeTableBtn }>
+                            <Link
+                                className = "link"
+                                to="/Words">Список слов</Link>
+                        </li>
+                        <li onClick = { handleChangeCardBtn }>
+                            <Link
+                                className = "link" 
+                                to="/Words/training">Режим тренировки</Link>
+                        </li>
+                    </nav>
+                    <CSSTransition
+                        in={ pressedTableBtn }
+                        timeout={300}
+                        classNames="alert"
+                        unmountOnExit>
+                        <form action="" className="form">
+                            { search }  
+                        </form>
+                    </CSSTransition>
+                </div>
                 <CSSTransition
-                    in={ pressedTableBtn }
+                    in={ pressedCardBtn }
                     timeout={300}
                     classNames="alert"
                     unmountOnExit>
-                    <form action="" className="form">
-                        { search }  
-                    </form>
-                </CSSTransition>
-            </div>
-            <CSSTransition
-                in={ pressedCardBtn }
-                timeout={300}
-                classNames="alert"
-                unmountOnExit>
-                <div className = "timer">
-                    <Timer />
-                </div>
-            </CSSTransition> 
-            <Link to="/Words">
-                <img 
-                    src={logo} 
-                    className = "logo" 
-                    alt="logo"
-                    onClick = { handleChangeTableBtn } />
-            </Link>
-        </header>
+                    <div className = "timer">
+                        <Timer />
+                    </div>
+                </CSSTransition> 
+                <Link to="/Words">
+                    <img 
+                        src={logo} 
+                        className = "logo" 
+                        alt="logo"
+                        onClick = { handleChangeTableBtn } />
+                </Link>
+            </header>
+        </div>
+        
     );
 };
 

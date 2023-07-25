@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useRef, useEffect } from 'react';
 
 import './CardItem.scss';
 
@@ -10,35 +9,40 @@ export default function CardItem(props){
         transcription, 
         russian, 
         pressed, 
-        setPressed
+        setPressed,
+        openCard,
+        setOpenCard
     } = props;
  
+        
+    const ref = useRef();
+    
+    useEffect(() => ref.current.focus(), []);
 
     const handleChange = () => {
         setPressed(!pressed);
+        setOpenCard(openCard + 1);
     };
 
     const sideBtnFront = (
         <button 
-            className = "button_check"  
+            className = "button_check"
+            ref={ref}  
             onClick = { handleChange }> Проверить </button> 
     ); 
 
     const sideBtnFlip = (
         <div 
             className = "translate" 
-            onClick = { handleChange }
         >{ russian }</div> 
     );
 
     return (
-
         <div className = "card_item"   key = { id }>
             <div className = {`englishWord ${color}`}>{ english }</div>
             <div className = "transcription" >{ transcription }</div>
             <> { pressed ? sideBtnFlip : sideBtnFront } </>
         </div>
-      
     );
 };
   

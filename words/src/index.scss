@@ -2,12 +2,11 @@
 * {
   // outline: 2px solid red;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 body {
   min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   color: $colorText;
   font-family: $fontMain;
   font-weight: 400;
