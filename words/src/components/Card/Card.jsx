@@ -8,7 +8,7 @@ import CardItem from '../CardItem/CardItem';
 
 import './Card.scss';
 
-const Card = forwardRef((props, ref) => {
+const Card = forwardRef((props) => {
     const { indexCard } = props;
     const arrColorWords = [ 'red', 'orange', 'yellow', 'green', 'blue', 'main', 'violet' ];
     const rand = Math.floor(Math.random()*arrColorWords.length);
@@ -18,7 +18,6 @@ const Card = forwardRef((props, ref) => {
     const [colorWord, setColorWord] = useState('main');
     const [innerPressed, setInnerPressed] = useState(false);
     const [openCard, setOpenCard] = useState(0);
-    const [cardItemRef, setCardItemRef] = useState(null);
 
     const handleChangePrevCard = () => {
         if (innerPressed) {
@@ -85,8 +84,6 @@ const Card = forwardRef((props, ref) => {
                         setPressed = { setInnerPressed }
                         openCard = { openCard }
                         setOpenCard = { setOpenCard }
-                        ref = {(element) => setCardItemRef(element)}
-                        cardItemRef = { cardItemRef }
                     /> 
                 </div>
                 <div className = "counter" > { index + 1 } / { words.length }</div>
