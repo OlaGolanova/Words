@@ -18,8 +18,7 @@ const Card = forwardRef((props, ref) => {
     const [colorWord, setColorWord] = useState('main');
     const [innerPressed, setInnerPressed] = useState(false);
     const [openCard, setOpenCard] = useState(0);
-
-
+    const [cardItemRef, setCardItemRef] = useState(null);
 
     const handleChangePrevCard = () => {
         if (innerPressed) {
@@ -64,7 +63,7 @@ const Card = forwardRef((props, ref) => {
 
 
     return (
-       
+    
         <div className="card"> 
             <button 
                 className = "button"
@@ -86,7 +85,8 @@ const Card = forwardRef((props, ref) => {
                         setPressed = { setInnerPressed }
                         openCard = { openCard }
                         setOpenCard = { setOpenCard }
-                        ref = {ref}
+                        ref = {(element) => setCardItemRef(element)}
+                        cardItemRef = { cardItemRef }
                     /> 
                 </div>
                 <div className = "counter" > { index + 1 } / { words.length }</div>
@@ -106,7 +106,7 @@ const Card = forwardRef((props, ref) => {
 } 
 );
 
-// Card.displayName = 'Card';
+Card.displayName = 'Card';
 
 export default Card;
   

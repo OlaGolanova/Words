@@ -36,6 +36,8 @@
             outline: none;
         }
         &:focus-visible {
+            background: #77acbf;
+            border-color: $colorTextHoverBtn;
             outline: none;
         }
     }

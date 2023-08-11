@@ -66,7 +66,7 @@ export default  function Header(){
                         <li onClick = { handleChangeCardBtn }>
                             <Link
                                 className = "link" 
-                                to="/Words/training">Режим тренировки</Link>
+                                to="/Words/game">Режим тренировки</Link>
                         </li>
                     </nav>
                     <CSSTransition
