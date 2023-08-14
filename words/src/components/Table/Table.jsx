@@ -20,51 +20,70 @@ export default function Table() {
     const [ inputEmptyTranscription, setInputEmptyTranscription ] = useState('');
     const [ inputEmptyRussian, setInputEmptyRussian ] = useState('');
 
+    
+    const [ isValidEnglish, setIsValidEnglish ] = useState(false);
+    const [ isValidTranscription, setIsValidTranscription ] = useState(false);
+    const [ isValidRussian, setIsValidRussian ] = useState(false);
+
     const [ disableBtn, setDisableBtn ] = useState(true);
 
     const [ classNameSaveBtn, setClassNameSaveBtn ] = useState('disable');
 
-
+ 
     const handleCancel = () => {
         setPressed(!pressed);
         setEditEnglish('');
         setEditTranscription('');
         setEditRussian('');
         setInputEmptyEnglish('');
+        setInputEmptyTranscription('');
+        setInputEmptyRussian('');
     };
 
     const handleChangeInputEnglish = (e) => {
         const englishRegex = /^[A-Za-z]+$/;
         setEditEnglish(e.target.value);
+        setIsValidEnglish(englishRegex.test(e.target.value));
 
         if (englishRegex.test(e.target.value)) {
-            setClassNameSaveBtn ('');
             setInputEmptyEnglish('');
-            setDisableBtn(false);
+            setClassNameSaveBtn((isValidEnglish && isValidTranscription && isValidRussian) ? '' : 'disable');
+            setDisableBtn( (isValidEnglish && isValidTranscription && isValidRussian) ? false : true );
         
         } else{
             setClassNameSaveBtn ('disable');
             setInputEmptyEnglish('red-border');
-            setDisableBtn(true);
+            setClassNameSaveBtn('disable');
+            setDisableBtn( true );
         };
     };
 
     const handleChangeInputTranscription = (e) => {
+        const transcriptionRegex =  /^\[?[a-zA-Z-\d ]+\]?$/ ;
         setEditTranscription(e.target.value);
-        setInputEmptyTranscription(e.target.value === '' ? 'red-border' : '');
-        setClassNameSaveBtn((e.target.value === '' || editEnglish === '' || editRussian === '') ? 'disable' : '');
+        setIsValidTranscription(transcriptionRegex.test(e.target.value));
  
-        
-        setDisableBtn( (e.target.value === '' || editEnglish === '' || editRussian === '') ? true : false );
+
+        if (transcriptionRegex.test(e.target.value)) {
+            setInputEmptyTranscription('');
+            setClassNameSaveBtn((isValidEnglish && isValidTranscription && isValidRussian) ? '' : 'disable');
+            setDisableBtn( (isValidEnglish && isValidTranscription && isValidRussian) ? false : true );
+            
+        }else{
+            setClassNameSaveBtn ('disable');
+            setInputEmptyTranscription('red-border');
+            setDisableBtn(true);
+        };
     };
     const handleChangeInputRussian = (e) => {
         const russianRegex = /^[а-яёА-ЯЁ]+$/;
         setEditRussian(e.target.value);
+        setIsValidRussian(russianRegex.test(e.target.value));
 
         if (russianRegex.test(e.target.value)) {
-            setClassNameSaveBtn ('');
             setInputEmptyRussian('');
-            setDisableBtn(false);
+            setClassNameSaveBtn((isValidEnglish && isValidTranscription && isValidRussian) ? '' : 'disable');
+            setDisableBtn( (isValidEnglish && isValidTranscription && isValidRussian) ? false : true );
 
         }else{
             setClassNameSaveBtn ('disable');
@@ -85,8 +104,6 @@ export default function Table() {
         setClassNameSaveBtn('disable');
 
     };
-
-  
 
     const inputNewWord = (
         <tr className= "choiceTr" >

@@ -49,12 +49,21 @@ export default function TableRow(props){
     };
 
     const handleChangeInputTranscription = (e) => {
+        const transcriptionRegex =  /^\[?[a-zA-Z-\d ]+\]?$/ ;
         setEditTranscription(e.target.value);
-        const isEmptyTranscription = e.target.value === '';
-        setInputEmptyTranscription(isEmptyTranscription ? 'red-border' : '');
-        setClassNameSaveBtn(isEmptyTranscription ? 'disable' : '');
+
+        if (transcriptionRegex.test(e.target.value)) {
+            setClassNameSaveBtn('');
+            setInputEmptyTranscription('');
+
+            setDisableBtn(false);
        
-        setDisableBtn( isEmptyTranscription ? true : false );
+        }else{
+            setClassNameSaveBtn ('disable');
+            setInputEmptyTranscription('red-border');
+
+            setDisableBtn(true);
+        };
     };
     const handleChangeInputRussian = (e) => {
         const russianRegex = /^[а-яёА-ЯЁ]+$/;
@@ -69,7 +78,7 @@ export default function TableRow(props){
         }else{
             setClassNameSaveBtn ('disable');
             setInputEmptyRussian('red-border');
-            
+
             setDisableBtn(true);
         };
         
