@@ -30,28 +30,23 @@ export default function Table() {
         setEditEnglish('');
         setEditTranscription('');
         setEditRussian('');
+        setInputEmptyEnglish('');
     };
 
     const handleChangeInputEnglish = (e) => {
         const englishRegex = /^[A-Za-z]+$/;
-    
+        setEditEnglish(e.target.value);
+
         if (englishRegex.test(e.target.value)) {
-            setEditEnglish(e.target.value);
+            setClassNameSaveBtn ('');
+            setInputEmptyEnglish('');
+            setDisableBtn(false);
+        
         } else{
-            setEditEnglish('');
             setClassNameSaveBtn ('disable');
             setInputEmptyEnglish('red-border');
             setDisableBtn(true);
         };
-        setInputEmptyEnglish((e.target.value === ''|| editEnglish === '') ? 'red-border' : '');
-        setClassNameSaveBtn((e.target.value === '' || 
-        editEnglish === '' ||
-        editTranscription === '' || 
-        editRussian === '') ? 
-            'disable' : '');
-
-
-        setDisableBtn((e.target.value === '' || editTranscription === '' || editRussian === '') ? true : false);
     };
 
     const handleChangeInputTranscription = (e) => {
@@ -64,23 +59,18 @@ export default function Table() {
     };
     const handleChangeInputRussian = (e) => {
         const russianRegex = /^[а-яёА-ЯЁ]+$/;
-    
+        setEditRussian(e.target.value);
+
         if (russianRegex.test(e.target.value)) {
-            setEditRussian(e.target.value);
+            setClassNameSaveBtn ('');
+            setInputEmptyRussian('');
+            setDisableBtn(false);
+
         }else{
-            setEditRussian('');
             setClassNameSaveBtn ('disable');
             setInputEmptyRussian('red-border');
             setDisableBtn(true);
         };
-        setInputEmptyRussian((e.target.value === ''|| editRussian === '') ? 'red-border' : '');
-        setClassNameSaveBtn((e.target.value === '' || 
-        editRussian === '' || 
-        editTranscription === '' || 
-        editEnglish === '')? 
-            'disable' : '');
-        
-        setDisableBtn((e.target.value === '' || editTranscription === '' || editEnglish === '') ? true : false );
     };
 
     const handleSave = () => {

@@ -33,20 +33,19 @@ export default function TableRow(props){
 
     const handleChangeInputEnglish = (e) => {
         const englishRegex = /^[A-Za-z]+$/;
-    
+        setEditEnglish(e.target.value);
+
         if (englishRegex.test(e.target.value)) {
-            setEditEnglish(e.target.value);
+            setInputEmptyEnglish('');
+            setClassNameSaveBtn('');
+
+            setDisableBtn(false);
         } else{
-            setEditEnglish('');
             setClassNameSaveBtn ('disable');
             setInputEmptyEnglish('red-border');
+
             setDisableBtn(true);
         };
-        const isEmptyEnglish = (e.target.value === '' ||  editEnglish === '');
-        setInputEmptyEnglish(isEmptyEnglish ? 'red-border' : '');
-        setClassNameSaveBtn(isEmptyEnglish ? 'disable' : '');
-    
-        setDisableBtn(isEmptyEnglish ? true : false);
     };
 
     const handleChangeInputTranscription = (e) => {
@@ -55,27 +54,25 @@ export default function TableRow(props){
         setInputEmptyTranscription(isEmptyTranscription ? 'red-border' : '');
         setClassNameSaveBtn(isEmptyTranscription ? 'disable' : '');
        
- 
         setDisableBtn( isEmptyTranscription ? true : false );
     };
     const handleChangeInputRussian = (e) => {
         const russianRegex = /^[а-яёА-ЯЁ]+$/;
+        setEditRussian(e.target.value);
     
         if (russianRegex.test(e.target.value)) {
-            setEditRussian(e.target.value);
+            setClassNameSaveBtn('');
+            setInputEmptyRussian('');
+
+            setDisableBtn(false);
+       
         }else{
-            setEditRussian('');
             setClassNameSaveBtn ('disable');
             setInputEmptyRussian('red-border');
+            
             setDisableBtn(true);
         };
-    
-        const isEmptyRussian = (e.target.value === '' ||  editRussian === '');
-        setClassNameSaveBtn(isEmptyRussian ? 'disable' : '');
-        setInputEmptyRussian(isEmptyRussian ? 'red-border' : '');
-       
         
-        setDisableBtn(isEmptyRussian ? true : false );
     };
 
     const handleSave = () => {
@@ -84,7 +81,6 @@ export default function TableRow(props){
         console.log(editEnglish);
         console.log( editTranscription);
         console.log(editRussian);
-
 
     };
   
