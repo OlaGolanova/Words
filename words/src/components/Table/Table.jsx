@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faClose } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,32 +11,133 @@ import './Table.scss';
 
 
 export default function Table() {
+    const [pressed, setPressed] = useState(false);
+    const [editEnglish, setEditEnglish] = useState('');
+    const [editTranscription, setEditTranscription] = useState('');
+    const [editRussian, setEditRussian] = useState('');
+
+    const [ inputEmptyEnglish, setInputEmptyEnglish ] = useState('');
+    const [ inputEmptyTranscription, setInputEmptyTranscription ] = useState('');
+    const [ inputEmptyRussian, setInputEmptyRussian ] = useState('');
+
+    const [ disableBtn, setDisableBtn ] = useState(true);
+
+    const [ classNameSaveBtn, setClassNameSaveBtn ] = useState('disable');
+
+
+    const handleCancel = () => {
+        setPressed(!pressed);
+        setEditEnglish('');
+        setEditTranscription('');
+        setEditRussian('');
+    };
+
+    const handleChangeInputEnglish = (e) => {
+        const englishRegex = /^[A-Za-z]+$/;
+    
+        if (englishRegex.test(e.target.value)) {
+            setEditEnglish(e.target.value);
+        } else{
+            setEditEnglish('');
+            setClassNameSaveBtn ('disable');
+            setInputEmptyEnglish('red-border');
+            setDisableBtn(true);
+        };
+        setInputEmptyEnglish((e.target.value === ''|| editEnglish === '') ? 'red-border' : '');
+        setClassNameSaveBtn((e.target.value === '' || 
+        editEnglish === '' ||
+        editTranscription === '' || 
+        editRussian === '') ? 
+            'disable' : '');
+
+
+        setDisableBtn((e.target.value === '' || editTranscription === '' || editRussian === '') ? true : false);
+    };
+
+    const handleChangeInputTranscription = (e) => {
+        setEditTranscription(e.target.value);
+        setInputEmptyTranscription(e.target.value === '' ? 'red-border' : '');
+        setClassNameSaveBtn((e.target.value === '' || editEnglish === '' || editRussian === '') ? 'disable' : '');
+ 
+        
+        setDisableBtn( (e.target.value === '' || editEnglish === '' || editRussian === '') ? true : false );
+    };
+    const handleChangeInputRussian = (e) => {
+        const russianRegex = /^[а-яёА-ЯЁ]+$/;
+    
+        if (russianRegex.test(e.target.value)) {
+            setEditRussian(e.target.value);
+        }else{
+            setEditRussian('');
+            setClassNameSaveBtn ('disable');
+            setInputEmptyRussian('red-border');
+            setDisableBtn(true);
+        };
+        setInputEmptyRussian((e.target.value === ''|| editRussian === '') ? 'red-border' : '');
+        setClassNameSaveBtn((e.target.value === '' || 
+        editRussian === '' || 
+        editTranscription === '' || 
+        editEnglish === '')? 
+            'disable' : '');
+        
+        setDisableBtn((e.target.value === '' || editTranscription === '' || editEnglish === '') ? true : false );
+    };
+
+    const handleSave = () => {
+
+        console.log(editEnglish);
+        console.log( editTranscription);
+        console.log(editRussian);
+        setEditEnglish('');
+        setEditTranscription('');
+        setEditRussian('');
+        setDisableBtn(true);
+        setClassNameSaveBtn('disable');
+
+    };
+
+  
 
     const inputNewWord = (
         <tr className= "choiceTr" >
             <td></td>
             <td> 
-                <InputChoice/>
+                <InputChoice
+                    type="text"
+                    className = { inputEmptyEnglish }
+                    value = { editEnglish }
+                    onEdit = { handleChangeInputEnglish } />
             </td>
             <td> 
-                <InputChoice/>  
+                <InputChoice
+                    type="text"
+                    className = { inputEmptyTranscription }
+                    value = { editTranscription }
+                    onEdit = { handleChangeInputTranscription }/>  
             </td>
             <td> 
-                <InputChoice/> 
+                <InputChoice
+                    type="text"
+                    className = { inputEmptyRussian}
+                    value = { editRussian }
+                    onEdit = { handleChangeInputRussian }/> 
             </td>
             <td>
-                <button className= "save" >
+                <button 
+                    className={`save ${classNameSaveBtn}`} 
+                    disabled={disableBtn} 
+                    onClick = { handleSave }>
                     <FontAwesomeIcon icon = { faCheck } />
                     Сохранить
                 </button>
                 <button 
-                    className = "cancel" >
+                    className = "cancel"
+                    onClick = {  handleCancel } >
                     <FontAwesomeIcon icon = { faClose } />
                 </button>
             </td>
         </tr>      
     );
-
 
     return (
         <div className="table">
@@ -53,6 +154,7 @@ export default function Table() {
                 <tbody>
                     <>
                         { inputNewWord } 
+                  
                     </>
                     {
                         words.map(function (word,index) {

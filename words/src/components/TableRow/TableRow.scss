@@ -48,3 +48,12 @@ tr {
 .choiceTr {
     background: $colorHeader;
 }
+
+.red-border {
+    border: 2px solid red;
+    transition: 1.5s all;
+  }
+.disable {
+   background: black;
+   transition: 1.5s all;
+}
