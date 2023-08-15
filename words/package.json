@@ -3,6 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://OlaGolanova.github.io/Words",
+  "proxy": {
+    "/search": {
+      "target": "https://www.google.com",
+      "changeOrigin": true
+    },
+    "/api": {
+      "target": "http://itgirlschool.justmakeit.ru",
+      "changeOrigin": true
+    }
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
