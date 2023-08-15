@@ -13,11 +13,6 @@ import './Card.scss';
 const Card = forwardRef((props, ref) => {
     const { words } = useContext( WordsContext );
     const { indexCard } = props;
-<<<<<<< HEAD
-    console.log (words);
-=======
-    const { words } = useContext( WordsContext );
->>>>>>> 47de1472fc9a3d149e1a1775f1cc7c87578b239d
     const arrColorWords = [ 'red', 'orange', 'yellow', 'green', 'blue', 'main', 'violet' ];
     const rand = Math.floor(Math.random()*arrColorWords.length);
     const randomColor = arrColorWords[rand];
