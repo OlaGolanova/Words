@@ -11,8 +11,9 @@ import { WordsContext } from '../WordsContextProvider/WordsContextProvider';
 import './Card.scss';
 
 const Card = forwardRef((props, ref) => {
-    const { indexCard } = props;
     const { words } = useContext( WordsContext );
+    const { indexCard } = props;
+    console.log (words);
     const arrColorWords = [ 'red', 'orange', 'yellow', 'green', 'blue', 'main', 'violet' ];
     const rand = Math.floor(Math.random()*arrColorWords.length);
     const randomColor = arrColorWords[rand];
@@ -79,6 +80,7 @@ const Card = forwardRef((props, ref) => {
             <div className = "wrapper">
                 <div className= "openCard">Проверено слов: {openCard}</div>
                 <div className = { pressed ? 'cardItem' : 'animation' }>
+              
                     <CardItem
                         color = { colorWord }
                         english = { words[index].english }

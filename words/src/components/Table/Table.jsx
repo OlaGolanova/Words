@@ -14,6 +14,8 @@ import './Table.scss';
 
 export default function Table() {
     const { words } = useContext(WordsContext);
+    console.log(words)
+
     const [pressed, setPressed] = useState(false);
     const [editEnglish, setEditEnglish] = useState('');
     const [editTranscription, setEditTranscription] = useState('');
