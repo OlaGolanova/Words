@@ -21,7 +21,7 @@ export default function CardItem(props){
         if(!pressed){
             ref.current.focus();
         }  
-    }, [pressed]);
+    });
 
 
     
