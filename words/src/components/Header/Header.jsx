@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -11,8 +11,10 @@ import './Header.scss';
 
   
 export default  function Header(){
-    const [pressedCardBtn, setPressedCardBtn] = useState(false);
-    const [pressedTableBtn, setPressedTableBtn] = useState(true);
+    const location = useLocation();
+    const isTrainingMode = location.pathname === '/Words/game';
+    const [pressedCardBtn, setPressedCardBtn] = useState(isTrainingMode);
+    const [pressedTableBtn, setPressedTableBtn] = useState(!isTrainingMode);
     const [value, setValue] = useState('');
    
     const handleChangeCardBtn = () => {
@@ -60,13 +62,11 @@ export default  function Header(){
                     <nav>
                         <li onClick = { handleChangeTableBtn }>
                             <Link
-                                className = "link"
-                                to="/Words">Список слов</Link>
+                                className = "link" to="/Words">Список слов</Link>
                         </li>
                         <li onClick = { handleChangeCardBtn }>
                             <Link
-                                className = "link" 
-                                to="/Words/game">Режим тренировки</Link>
+                                className = "link" to="/Words/game">Режим тренировки</Link>
                         </li>
                     </nav>
                     <CSSTransition
