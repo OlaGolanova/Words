@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState,  useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faClose } from '@fortawesome/free-solid-svg-icons';
 
 
-import words from '../../utils/words.json'; 
+// import words from '../../utils/words.json'; 
 import TableRow from '../TableRow/TableRow';
 import InputChoice from '../InputChoice/InputChoice';
+import { WordsContext } from '../WordsContextProvider/WordsContextProvider';
 import './Table.scss';
 
 
 
+
 export default function Table() {
+    const { words } = useContext(WordsContext);
     const [pressed, setPressed] = useState(false);
     const [editEnglish, setEditEnglish] = useState('');
     const [editTranscription, setEditTranscription] = useState('');
@@ -147,38 +150,41 @@ export default function Table() {
     );
 
     return (
-        <div className="table">
-            <table>
-                <thead>
-                    <tr className = "tablehead">
-                        <th className= "number"></th>
-                        <th>Слово</th>
-                        <th>Транскрипция</th>
-                        <th>Перевод</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <>
-                        { inputNewWord } 
-                  
-                    </>
-                    {
-                        words.map(function (word,index) {
-                            return  <TableRow
-                                choice = { word.choice }
-                                key={ word.id }
-                                index = { index }
-                                english = { word.english }
-                                transcription = { word.transcription }
-                                russian = { word.russian }
-                                onDelete = { id => console.log( word.id) }
-                            />;
-                        })
-                    }
-                </tbody>
-            </table>
-        </div>
+        <WordsContext.Consumer> {}
+            <div className="table">
+                <table>
+                    <thead>
+                        <tr className = "tablehead">
+                            <th className= "number"></th>
+                            <th>Слово</th>
+                            <th>Транскрипция</th>
+                            <th>Перевод</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <>
+                            { inputNewWord } 
+                    
+                        </>
+                        {
+                            words.map(function (word,index) {
+                                return  <TableRow
+                                    choice = { word.choice }
+                                    key={ word.id }
+                                    index = { index }
+                                    english = { word.english }
+                                    transcription = { word.transcription }
+                                    russian = { word.russian }
+                                    onDelete = { id => console.log( word.id) }
+                                />;
+                            })
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </WordsContext.Consumer>
+       
     );  
 }
   
