@@ -18,9 +18,9 @@ export default function CardItem(props){
     const ref = useRef();
     
     useEffect(() => {
-        
-        ref.current.focus();
-        
+        if(!pressed){
+            ref.current.focus();
+        }  
     });
 
     
