@@ -53,5 +53,6 @@ export default function CardItem(props){
   
 CardItem.defaultProps = {
     english: 'loading', 
+    transcription: 'ˈləʊdɪŋ', 
     russian: 'загрузка'
 };

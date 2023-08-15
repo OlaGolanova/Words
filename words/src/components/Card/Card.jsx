@@ -1,15 +1,18 @@
-import React, { useState, forwardRef } from 'react';
+import React, { useState, forwardRef, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
-import words from '../../utils/words.json'; 
+// import words from '../../utils/words.json'; 
 import CardItem from '../CardItem/CardItem';
+
+import { WordsContext } from '../WordsContextProvider/WordsContextProvider';
 
 
 import './Card.scss';
 
 const Card = forwardRef((props, ref) => {
     const { indexCard } = props;
+    const { words } = useContext( WordsContext );
     const arrColorWords = [ 'red', 'orange', 'yellow', 'green', 'blue', 'main', 'violet' ];
     const rand = Math.floor(Math.random()*arrColorWords.length);
     const randomColor = arrColorWords[rand];
