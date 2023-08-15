@@ -90,20 +90,17 @@ export default function App() {
         return <div>Loading...</div>;
     }
     return (
-
-        <WordsContext.Provider value = { { words } }>
-            <Router>
-                <div className = "app">
-                    <Header />
-                    <Routes>
-                        <Route  path="/Words" exact element={ <Table />}/>
-                        <Route  path="/Words/game" element={<Card /> }/>
-                        <Route  path="*" element={ <NotFound /> }/>
-                    </Routes>
-                    <Footer />
-                </div>
-            </Router>
-        </WordsContext.Provider>
-       
+        <Router>
+            <div className = "app">
+                <Header />
+                <Routes>
+                    <Route  path="/Words" exact element={ <Table />}/>
+                    {/* <Route  path="/Words:id" exact element={ <Table />}/> */}
+                    <Route  path="/Words/game" element={<Card /> }/>
+                    <Route  path="*" element={ <NotFound /> }/>
+                </Routes>
+                <Footer />
+            </div>
+        </Router>
     );
 };
