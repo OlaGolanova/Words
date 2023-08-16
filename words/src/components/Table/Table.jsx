@@ -100,6 +100,9 @@ export default function Table() {
         setEditEnglish('');
         setEditTranscription('');
         setEditRussian('');
+        setIsValidEnglish(false);
+        setIsValidTranscription(false);
+        setIsValidRussian(false);
         setDisableBtn(true);
         setClassNameSaveBtn('disable');
 
