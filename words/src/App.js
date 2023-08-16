@@ -46,7 +46,7 @@ export default function App() {
                 setError(error);
                 setIsLoading(false);
             });
-    }, []);
+    }, [] );
 
     const tryAgain = () => {
     

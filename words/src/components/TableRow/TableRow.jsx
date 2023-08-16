@@ -84,24 +84,26 @@ export default function TableRow(props){
         
     };
 
-    const wordSave = () => {
+    const wordSave = (id) => {
         setPressed(!pressed);
 
+        const elem = id;
         const element = {
             english: editEnglish,
             transcription: editTranscription,
             russian: editRussian
         };
+        console.log(element)
 
-        fetch('/api/words/add',
+        fetch(`/api/words/${elem}/update`,
             {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json;charset=utf-8'},
                 body: JSON.stringify(element)
             })
             .then(response => response.json())
-            .then(elem => {
-                console.log(elem);
+            .then(element => {
+                console.log(element);
             })
 
             .catch(error => console.log(error));
@@ -167,7 +169,7 @@ export default function TableRow(props){
                 <button 
                     className = {`save ${classNameSaveBtn}`} 
                     disabled = {disableBtn}
-                    onClick = { wordSave }
+                    onClick = { (id) => wordSave(id) }
                 >
                     <FontAwesomeIcon icon = { faCheck } />
                     Сохранить

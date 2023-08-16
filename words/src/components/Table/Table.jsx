@@ -1,4 +1,4 @@
-import React, { useState,  useContext } from 'react';
+import React, { useState,  useContext} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faClose } from '@fortawesome/free-solid-svg-icons';
 
@@ -35,7 +35,7 @@ export default function Table() {
   
 
  
-    const wordCancel = () => {
+    const wordCancelNew = () => {
         setPressed(!pressed);
         setEditEnglish('');
         setEditTranscription('');
@@ -97,11 +97,12 @@ export default function Table() {
         };
     };
 
-    const wordSave = () => {
+    const wordSaveNew = () => {
 
         // console.log(editEnglish);
         // console.log( editTranscription);
         // console.log(editRussian);
+
         setEditEnglish('');
         setEditTranscription('');
         setEditRussian('');
@@ -147,6 +148,7 @@ export default function Table() {
             })
 
             .catch(error => console.log(error));
+
         
     };
 
@@ -179,13 +181,13 @@ export default function Table() {
                 <button 
                     className={`save ${classNameSaveBtn}`} 
                     disabled={disableBtn} 
-                    onClick = { wordSave }>
+                    onClick = { wordSaveNew }>
                     <FontAwesomeIcon icon = { faCheck } />
                     Сохранить
                 </button>
                 <button 
                     className = "cancel"
-                    onClick = {  wordCancel } >
+                    onClick = {  wordCancelNew } >
                     <FontAwesomeIcon icon = { faClose } />
                 </button>
             </td>
