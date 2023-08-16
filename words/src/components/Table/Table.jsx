@@ -32,8 +32,10 @@ export default function Table() {
 
     const [ classNameSaveBtn, setClassNameSaveBtn ] = useState('disable');
 
+  
+
  
-    const handleCancel = () => {
+    const wordCancel = () => {
         setPressed(!pressed);
         setEditEnglish('');
         setEditTranscription('');
@@ -95,18 +97,59 @@ export default function Table() {
         };
     };
 
-    const handleSave = () => {
+    const wordSave = () => {
 
-        console.log(editEnglish);
-        console.log( editTranscription);
-        console.log(editRussian);
+        // console.log(editEnglish);
+        // console.log( editTranscription);
+        // console.log(editRussian);
         setEditEnglish('');
         setEditTranscription('');
         setEditRussian('');
+        setIsValidEnglish(false);
+        setIsValidTranscription(false);
+        setIsValidRussian(false);
         setDisableBtn(true);
         setClassNameSaveBtn('disable');
 
+        const element = {
+            english: editEnglish,
+            transcription: editTranscription,
+            russian: editRussian
+        };
+
+        fetch('/api/words/add',
+            {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json;charset=utf-8'},
+                body: JSON.stringify(element)
+            })
+            .then(response => response.json())
+            .then(element => {
+                console.log(element);
+            })
+
+            .catch(error => console.log(error));
     };
+
+    const wordDelete = (id) => {
+
+        const element = id;
+
+        fetch(`/api/words/ ${element} /delete`,
+            {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json;charset=utf-8'},
+                body: JSON.stringify(element)
+            })
+            .then(response => response.json())
+            .then(elem => {
+                console.log(elem);
+            })
+
+            .catch(error => console.log(error));
+        
+    };
+
 
     const inputNewWord = (
         <tr className= "choiceTr" >
@@ -136,18 +179,19 @@ export default function Table() {
                 <button 
                     className={`save ${classNameSaveBtn}`} 
                     disabled={disableBtn} 
-                    onClick = { handleSave }>
+                    onClick = { wordSave }>
                     <FontAwesomeIcon icon = { faCheck } />
                     Сохранить
                 </button>
                 <button 
                     className = "cancel"
-                    onClick = {  handleCancel } >
+                    onClick = {  wordCancel } >
                     <FontAwesomeIcon icon = { faClose } />
                 </button>
             </td>
         </tr>      
     );
+
 
     return (
    
@@ -176,7 +220,7 @@ export default function Table() {
                                 english = { word.english }
                                 transcription = { word.transcription }
                                 russian = { word.russian }
-                                onDelete = { id => console.log( word.id) }
+                                onDelete = { (id) => wordDelete (word.id) }
                             />;
                         })
                     }

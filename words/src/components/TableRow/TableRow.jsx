@@ -24,7 +24,7 @@ export default function TableRow(props){
     const [ classNameSaveBtn, setClassNameSaveBtn ] = useState('');
 
 
-    const handleCancel = () => {
+    const wordCancel = () => {
         setPressed(!pressed);
         setEditEnglish(english);
         setEditTranscription(transcription);
@@ -84,17 +84,36 @@ export default function TableRow(props){
         
     };
 
-    const handleSave = () => {
+    const wordSave = () => {
         setPressed(!pressed);
 
-        console.log(editEnglish);
-        console.log( editTranscription);
-        console.log(editRussian);
+        const element = {
+            english: editEnglish,
+            transcription: editTranscription,
+            russian: editRussian
+        };
+
+        fetch('/api/words/add',
+            {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json;charset=utf-8'},
+                body: JSON.stringify(element)
+            })
+            .then(response => response.json())
+            .then(elem => {
+                console.log(elem);
+            })
+
+            .catch(error => console.log(error));
+
+
+        // console.log(editEnglish);
+        // console.log( editTranscription);
+        // console.log(editRussian);
+        // console.log(element);
 
     };
-  
-   
-  
+
     const row = (
         <tr key = { id }>
             <td> { index + 1 } </td>
@@ -104,7 +123,7 @@ export default function TableRow(props){
             <td>
                 <button
                     className = "pen" 
-                    onClick = { handleCancel }>
+                    onClick = { wordCancel }>
                     <FontAwesomeIcon icon = { faPen } />
                 </button>
                 <button 
@@ -148,14 +167,14 @@ export default function TableRow(props){
                 <button 
                     className = {`save ${classNameSaveBtn}`} 
                     disabled = {disableBtn}
-                    onClick = { handleSave }
+                    onClick = { wordSave }
                 >
                     <FontAwesomeIcon icon = { faCheck } />
                     Сохранить
                 </button>
                 <button 
                     className = "cancel" 
-                    onClick = { handleCancel }>
+                    onClick = { wordCancel }>
                     <FontAwesomeIcon icon = { faClose } />
                 </button>
             </td>
