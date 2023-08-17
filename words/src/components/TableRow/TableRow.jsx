@@ -1,20 +1,20 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash, faCheck, faClose } from '@fortawesome/free-solid-svg-icons';
 
-import { WordsContext } from '../WordsContextProvider/WordsContextProvider';
 import InputChoice from '../InputChoice/InputChoice';
 import './TableRow.scss';
 
 
+
+
 export default function TableRow(props){
-    const { flag, setFlag } = useContext(WordsContext);
     const {id, index, english, transcription, russian, onDelete } = props;
+
     const [pressed, setPressed] = useState(false);
     const [editEnglish, setEditEnglish] = useState(english);
     const [editTranscription, setEditTranscription] = useState(transcription);
     const [editRussian, setEditRussian] = useState(russian);
-    const [editWordId, setEditWordId] = useState(id);
 
     const [ inputEmptyEnglish, setInputEmptyEnglish ] = useState('');
     const [ inputEmptyTranscription, setInputEmptyTranscription ] = useState('');
@@ -24,7 +24,7 @@ export default function TableRow(props){
     const [ classNameSaveBtn, setClassNameSaveBtn ] = useState('');
 
 
-    const wordCancel = () => {
+    const handleCancel = () => {
         setPressed(!pressed);
         setEditEnglish(english);
         setEditTranscription(transcription);
@@ -84,38 +84,17 @@ export default function TableRow(props){
         
     };
 
-    const wordSave = () => {
+    const handleSave = () => {
         setPressed(!pressed);
-        setEditWordId(id);
-        const element = {
-            english: editEnglish,
-            transcription: editTranscription,
-            russian: editRussian
-        };
-        console.log(editWordId);
 
-        fetch(`/api/words/${editWordId}/update`,
-            {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json;charset=utf-8'},
-                body: JSON.stringify(element)
-            })
-            .then(response => response.json())
-            .then(element => {
-                console.log(element);
-                setFlag(!flag);
-            })
-
-            .catch(error => console.log(error));
-
-
-        // console.log(editEnglish);
-        // console.log( editTranscription);
-        // console.log(editRussian);
-        // console.log(element);
+        console.log(editEnglish);
+        console.log( editTranscription);
+        console.log(editRussian);
 
     };
-
+  
+   
+  
     const row = (
         <tr key = { id }>
             <td> { index + 1 } </td>
@@ -125,7 +104,7 @@ export default function TableRow(props){
             <td>
                 <button
                     className = "pen" 
-                    onClick = { wordCancel }>
+                    onClick = { handleCancel }>
                     <FontAwesomeIcon icon = { faPen } />
                 </button>
                 <button 
@@ -169,14 +148,14 @@ export default function TableRow(props){
                 <button 
                     className = {`save ${classNameSaveBtn}`} 
                     disabled = {disableBtn}
-                    onClick = { wordSave }
+                    onClick = { handleSave }
                 >
                     <FontAwesomeIcon icon = { faCheck } />
                     Сохранить
                 </button>
                 <button 
                     className = "cancel" 
-                    onClick = { wordCancel }>
+                    onClick = { handleCancel }>
                     <FontAwesomeIcon icon = { faClose } />
                 </button>
             </td>
