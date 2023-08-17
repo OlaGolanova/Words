@@ -25,6 +25,7 @@ export default function App() {
     const [words, setWords] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [flag, setFlag] = useState();
 
     useEffect(() => {
         setIsLoading(true);
@@ -46,29 +47,11 @@ export default function App() {
                 setError(error);
                 setIsLoading(false);
             });
-    }, [] );
+    }, [flag] );
 
     const tryAgain = () => {
     
-        setIsLoading(true);
-
-        fetch('/api/words')
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error(`Что-то пошло не так...Ошибка ${response.status}`);
-    
-                }
-            })
-            .then((response) => {
-                setWords(response);
-                setIsLoading(false);
-            })
-            .catch(error => {
-                setError(error);
-                setIsLoading(false);
-            });
+        setFlag(!flag);
     };
     
     if (error) {
@@ -84,7 +67,7 @@ export default function App() {
 
     return (
 
-        <WordsContext.Provider value = { { words } }>
+        <WordsContext.Provider value = { { words, flag, setFlag} }>
             <Router>
                 <div className = "app">
                     <Header />

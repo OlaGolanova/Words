@@ -13,7 +13,7 @@ import './Table.scss';
 
 
 export default function Table() {
-    const { words } = useContext(WordsContext);
+    const { words, flag, setFlag } = useContext(WordsContext);
     const [pressed, setPressed] = useState(false);
     const [editEnglish, setEditEnglish] = useState('');
     const [editTranscription, setEditTranscription] = useState('');
@@ -31,8 +31,6 @@ export default function Table() {
     const [ disableBtn, setDisableBtn ] = useState(true);
 
     const [ classNameSaveBtn, setClassNameSaveBtn ] = useState('disable');
-
-  
 
  
     const wordCancelNew = () => {
@@ -99,10 +97,6 @@ export default function Table() {
 
     const wordSaveNew = () => {
 
-        // console.log(editEnglish);
-        // console.log( editTranscription);
-        // console.log(editRussian);
-
         setEditEnglish('');
         setEditTranscription('');
         setEditRussian('');
@@ -127,6 +121,7 @@ export default function Table() {
             .then(response => response.json())
             .then(element => {
                 console.log(element);
+                setFlag(!flag);
             })
 
             .catch(error => console.log(error));
@@ -145,10 +140,10 @@ export default function Table() {
             .then(response => response.json())
             .then(elem => {
                 console.log(elem);
+                setFlag(!flag);
             })
 
             .catch(error => console.log(error));
-
         
     };
 
