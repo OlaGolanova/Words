@@ -16,9 +16,6 @@ import Error from './components/Error/Error';
 import { WordsContext }   from './components/WordsContextProvider/WordsContextProvider';
 
 
-
-
-
 export default function App() {
 
   
@@ -26,7 +23,11 @@ export default function App() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const [flag, setFlag] = useState();
+   
+    const [searchWord, setSearchWord ] = useState();
+    const [flag2, setFlag2] = useState();
 
+    console.log(searchWord);
     useEffect(() => {
         setIsLoading(true);
 
@@ -67,7 +68,7 @@ export default function App() {
 
     return (
 
-        <WordsContext.Provider value = { { words, flag, setFlag} }>
+        <WordsContext.Provider value = { { words, setWords, flag, setFlag } }>
             <Router>
                 <div className = "app">
                     <Header />
