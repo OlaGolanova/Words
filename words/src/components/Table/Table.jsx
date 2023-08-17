@@ -15,9 +15,9 @@ import './Table.scss';
 export default function Table() {
     const { words, flag, setFlag } = useContext(WordsContext);
     const [pressed, setPressed] = useState(false);
-    const [editEnglish, setEditEnglish] = useState('');
-    const [editTranscription, setEditTranscription] = useState('');
-    const [editRussian, setEditRussian] = useState('');
+    const [editNewEnglish, setEditNewEnglish] = useState('');
+    const [editNewTranscription, setEditNewTranscription] = useState('');
+    const [editNewRussian, setEditNewRussian] = useState('');
 
     const [ inputEmptyEnglish, setInputEmptyEnglish ] = useState('');
     const [ inputEmptyTranscription, setInputEmptyTranscription ] = useState('');
@@ -35,9 +35,9 @@ export default function Table() {
  
     const wordCancelNew = () => {
         setPressed(!pressed);
-        setEditEnglish('');
-        setEditTranscription('');
-        setEditRussian('');
+        setEditNewEnglish('');
+        setEditNewTranscription('');
+        setEditNewRussian('');
         setInputEmptyEnglish('');
         setInputEmptyTranscription('');
         setInputEmptyRussian('');
@@ -45,7 +45,7 @@ export default function Table() {
 
     const handleChangeInputEnglish = (e) => {
         const englishRegex = /^[A-Za-z]+$/;
-        setEditEnglish(e.target.value);
+        setEditNewEnglish(e.target.value);
         setIsValidEnglish(englishRegex.test(e.target.value));
 
         if (englishRegex.test(e.target.value)) {
@@ -63,7 +63,7 @@ export default function Table() {
 
     const handleChangeInputTranscription = (e) => {
         const transcriptionRegex =  /^\[?[a-zA-Z-\d ]+\]?$/ ;
-        setEditTranscription(e.target.value);
+        setEditNewTranscription(e.target.value);
         setIsValidTranscription(transcriptionRegex.test(e.target.value));
  
 
@@ -80,7 +80,7 @@ export default function Table() {
     };
     const handleChangeInputRussian = (e) => {
         const russianRegex = /^[а-яёА-ЯЁ]+$/;
-        setEditRussian(e.target.value);
+        setEditNewRussian(e.target.value);
         setIsValidRussian(russianRegex.test(e.target.value));
 
         if (russianRegex.test(e.target.value)) {
@@ -97,9 +97,9 @@ export default function Table() {
 
     const wordSaveNew = () => {
 
-        setEditEnglish('');
-        setEditTranscription('');
-        setEditRussian('');
+        setEditNewEnglish('');
+        setEditNewTranscription('');
+        setEditNewRussian('');
         setIsValidEnglish(false);
         setIsValidTranscription(false);
         setIsValidRussian(false);
@@ -107,9 +107,9 @@ export default function Table() {
         setClassNameSaveBtn('disable');
 
         const element = {
-            english: editEnglish,
-            transcription: editTranscription,
-            russian: editRussian
+            english: editNewEnglish,
+            transcription: editNewTranscription,
+            russian: editNewRussian
         };
 
         fetch('/api/words/add',
@@ -147,6 +147,34 @@ export default function Table() {
         
     };
 
+    const wordEdit = (id,editEnglish,editTranscription,editRussian) => {
+
+        const element = {
+            english: editEnglish,
+            transcription: editTranscription,
+            russian: editRussian
+        }; 
+
+        
+        fetch(`/api/words/ ${id} /update`,
+            {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json;charset=utf-8'},
+                body: JSON.stringify(element)
+            })
+            .then(response => response.json())
+            .then(elem => {
+                console.log(elem);
+                setFlag(!flag);
+            })
+
+            .catch(error => console.log(error));
+        console.log(editEnglish);
+        console.log( editTranscription);
+        console.log(editRussian);
+
+    };
+
 
     const inputNewWord = (
         <tr className= "choiceTr" >
@@ -155,21 +183,21 @@ export default function Table() {
                 <InputChoice
                     type="text"
                     className = { inputEmptyEnglish }
-                    value = { editEnglish }
+                    value = { editNewEnglish }
                     onEdit = { handleChangeInputEnglish } />
             </td>
             <td> 
                 <InputChoice
                     type="text"
                     className = { inputEmptyTranscription }
-                    value = { editTranscription }
+                    value = { editNewTranscription }
                     onEdit = { handleChangeInputTranscription }/>  
             </td>
             <td> 
                 <InputChoice
                     type="text"
                     className = { inputEmptyRussian}
-                    value = { editRussian }
+                    value = { editNewRussian }
                     onEdit = { handleChangeInputRussian }/> 
             </td>
             <td>
@@ -218,6 +246,8 @@ export default function Table() {
                                 transcription = { word.transcription }
                                 russian = { word.russian }
                                 onDelete = { (id) => wordDelete (word.id) }
+                                onEdit = { (id,editEnglish,editTranscription,editRussian) => 
+                                    wordEdit(id,editEnglish,editTranscription,editRussian) }
                             />;
                         })
                     }

@@ -9,7 +9,7 @@ import './TableRow.scss';
 
 
 export default function TableRow(props){
-    const {id, index, english, transcription, russian, onDelete } = props;
+    const {id, index, english, transcription, russian, onDelete, onEdit } = props;
 
     const [pressed, setPressed] = useState(false);
     const [editEnglish, setEditEnglish] = useState(english);
@@ -24,7 +24,7 @@ export default function TableRow(props){
     const [ classNameSaveBtn, setClassNameSaveBtn ] = useState('');
 
 
-    const handleCancel = () => {
+    const wordCancel = () => {
         setPressed(!pressed);
         setEditEnglish(english);
         setEditTranscription(transcription);
@@ -84,12 +84,13 @@ export default function TableRow(props){
         
     };
 
-    const handleSave = () => {
+    const wordSave = () => {
         setPressed(!pressed);
+        onEdit(id, editEnglish, editTranscription, editRussian);
 
-        console.log(editEnglish);
-        console.log( editTranscription);
-        console.log(editRussian);
+        // console.log(editEnglish);
+        // console.log( editTranscription);
+        // console.log(editRussian);
 
     };
   
@@ -104,7 +105,7 @@ export default function TableRow(props){
             <td>
                 <button
                     className = "pen" 
-                    onClick = { handleCancel }>
+                    onClick = { wordCancel }>
                     <FontAwesomeIcon icon = { faPen } />
                 </button>
                 <button 
@@ -148,14 +149,14 @@ export default function TableRow(props){
                 <button 
                     className = {`save ${classNameSaveBtn}`} 
                     disabled = {disableBtn}
-                    onClick = { handleSave }
+                    onClick = { wordSave }
                 >
                     <FontAwesomeIcon icon = { faCheck } />
                     Сохранить
                 </button>
                 <button 
                     className = "cancel" 
-                    onClick = { handleCancel }>
+                    onClick = { wordCancel }>
                     <FontAwesomeIcon icon = { faClose } />
                 </button>
             </td>
