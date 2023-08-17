@@ -149,14 +149,16 @@ export default function Table() {
 
     const wordEdit = (id,editEnglish,editTranscription,editRussian) => {
 
+        const el = id;
         const element = {
+            id: id,
             english: editEnglish,
             transcription: editTranscription,
             russian: editRussian
         }; 
 
         
-        fetch(`/api/words/ ${id} /update`,
+        fetch(`/api/words/ ${el} /update`,
             {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json;charset=utf-8'},
@@ -169,6 +171,8 @@ export default function Table() {
             })
 
             .catch(error => console.log(error));
+
+        console.log(el);
         console.log(editEnglish);
         console.log( editTranscription);
         console.log(editRussian);
@@ -247,7 +251,7 @@ export default function Table() {
                                 russian = { word.russian }
                                 onDelete = { (id) => wordDelete (word.id) }
                                 onEdit = { (id,editEnglish,editTranscription,editRussian) => 
-                                    wordEdit(id,editEnglish,editTranscription,editRussian) }
+                                    wordEdit(word.id, editEnglish,editTranscription,editRussian) }
                             />;
                         })
                     }
