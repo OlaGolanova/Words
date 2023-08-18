@@ -154,10 +154,11 @@ export default function Table() {
             id: id,
             english: editEnglish,
             transcription: editTranscription,
-            russian: editRussian
+            russian: editRussian,
+            tags: '',
+            tags_json: '[]'
         }; 
 
-        
         fetch(`/api/words/ ${el} /update`,
             {
                 method: 'POST',
@@ -171,11 +172,6 @@ export default function Table() {
             })
 
             .catch(error => console.log(error));
-
-        console.log(el);
-        console.log(editEnglish);
-        console.log( editTranscription);
-        console.log(editRussian);
 
     };
 
