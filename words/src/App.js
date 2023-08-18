@@ -1,8 +1,14 @@
-import React from 'react';
+import React,{useState} from 'react';
+import { Provider } from 'mobx-react';
+import {observer, inject} from 'mobx-react';
+
 import {
     BrowserRouter as Router,
     Routes,
     Route } from 'react-router-dom';
+
+import WordsStore from './store/WordsStore';
+
 
 import './App.scss';
 import Header from './components/Header/Header';
@@ -16,21 +22,24 @@ import NotFound from './components/NotFound/NotFound';
 
 
 
+
 export default function App() {
 
     return (
-        <Router>
-            <div className = "app">
-                <Header />
-                <Routes>
-                    <Route  path="/Words" exact element={ <Table />}/>
-                    {/* <Route  path="/Words:id" exact element={ <Table />}/> */}
-                    <Route  path="/Words/game" element={<Card /> }/>
-                    <Route  path="*" element={ <NotFound /> }/>
-                </Routes>
-                <Footer />
-            </div>
-        </Router>
+        <Provider  { WordsStore }>
+            <Router>
+                <div className = "app">
+                    <Header />
+                    <Routes>
+                        <Route  path="/Words" exact element={ <Table />}/>
+                        {/* <Route  path="/Words:id" exact element={ <Table />}/> */}
+                        <Route  path="/Words/game" element={<Card /> }/>
+                        <Route  path="*" element={ <NotFound /> }/>
+                    </Routes>
+                    <Footer />
+                </div>
+            </Router>
+        </Provider>
     );
 };
 

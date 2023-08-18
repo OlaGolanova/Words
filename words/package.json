@@ -98,7 +98,6 @@
     "react-router-dom": "^6.14.0",
     "swiper": "^10.0.4"
   },
-  
   "jest": {
     "roots": [
       "<rootDir>/src"
