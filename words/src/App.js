@@ -1,13 +1,11 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import { Provider } from 'mobx-react';
-import {observer, inject} from 'mobx-react';
+
 
 import {
     BrowserRouter as Router,
     Routes,
     Route } from 'react-router-dom';
-
-import WordsStore from './store/WordsStore';
 
 
 import './App.scss';
@@ -16,6 +14,7 @@ import Footer from './components/Footer/Footer';
 import Table from './components/Table/Table';
 import Card from './components/Card/Card';
 import NotFound from './components/NotFound/NotFound';
+import WordsStore from './store/WordsStore';
 
 
 
@@ -25,14 +24,16 @@ import NotFound from './components/NotFound/NotFound';
 
 export default function App() {
 
+  
+
+
     return (
-        <Provider  { WordsStore }>
+        <Provider store={WordsStore}>
             <Router>
                 <div className = "app">
                     <Header />
                     <Routes>
                         <Route  path="/Words" exact element={ <Table />}/>
-                        {/* <Route  path="/Words:id" exact element={ <Table />}/> */}
                         <Route  path="/Words/game" element={<Card /> }/>
                         <Route  path="*" element={ <NotFound /> }/>
                     </Routes>
