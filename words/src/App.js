@@ -11,7 +11,7 @@ import Table from './components/Table/Table';
 import Card from './components/Card/Card';
 import NotFound from './components/NotFound/NotFound';
 import Loader from './components/Loader/Loader';
-import Error from './components/Error/Error';
+import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 
 import { WordsContext }   from './components/WordsContextProvider/WordsContextProvider';
 
@@ -29,14 +29,15 @@ export default function App() {
 
     console.log(searchWord);
     useEffect(() => {
+        setError(null);
         setIsLoading(true);
-
-        fetch('/api/words')
+        fetch('http://itgirlschool.justmakeit.ru/api/words')
             .then(response => {
                 if (response.ok) {
                     return response.json();
                 } else {
                     throw new Error(`Что-то пошло не так...Ошибка ${response.status}`);
+                    
     
                 }
             })
@@ -45,7 +46,7 @@ export default function App() {
                 setIsLoading(false);
             })
             .catch(error => {
-                setError(error);
+                setError(error.message);
                 setIsLoading(false);
             });
     }, [flag] );
@@ -54,16 +55,16 @@ export default function App() {
     
         setFlag(!flag);
     };
-    
+
     if (error) {
         return(
-            <Error
-                error = {Error.message}
+            <ErrorMessage
+                error = {error}
                 onClick = { tryAgain }
             />
+          
         );
     }
-
 
 
     return (

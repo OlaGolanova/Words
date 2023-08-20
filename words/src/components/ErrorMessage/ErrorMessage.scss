@@ -32,6 +32,10 @@
             background: #77acbf;
             color:$colorTextHoverBtn;
         }
+        &:active {
+            background: #44646f;
+            color:$colorTextHoverBtn;
+        }
         &:focus {
             cursor: pointer;
             background: #77acbf;
