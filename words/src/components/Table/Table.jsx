@@ -112,7 +112,7 @@ export default function Table() {
             russian: editNewRussian
         };
 
-        fetch('/api/words/add',
+        fetch('https://itgirlschool.justmakeit.ru/api/words/add',
             {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json;charset=utf-8'},
@@ -130,7 +130,7 @@ export default function Table() {
 
         const element = id;
 
-        fetch(`/api/words/ ${element} /delete`,
+        fetch(`https://itgirlschool.justmakeit.ru/api/words/ ${element} /delete`,
             {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json;charset=utf-8'},
@@ -157,7 +157,7 @@ export default function Table() {
             tags_json: '[]'
         }; 
 
-        fetch(`/api/words/ ${el} /update`,
+        fetch(`https://itgirlschool.justmakeit.ru/api/words/ ${el} /update`,
             {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json;charset=utf-8'},
