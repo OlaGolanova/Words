@@ -1,14 +1,17 @@
-import React, { useState, forwardRef } from 'react';
+import React, { useState, forwardRef, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
-import words from '../../utils/words.json'; 
+// import words from '../../utils/words.json'; 
 import CardItem from '../CardItem/CardItem';
+
+import { WordsContext } from '../WordsContextProvider/WordsContextProvider';
 
 
 import './Card.scss';
 
 const Card = forwardRef((props, ref) => {
+    const { words } = useContext( WordsContext );
     const { indexCard } = props;
     const arrColorWords = [ 'red', 'orange', 'yellow', 'green', 'blue', 'main', 'violet' ];
     const rand = Math.floor(Math.random()*arrColorWords.length);
@@ -76,6 +79,7 @@ const Card = forwardRef((props, ref) => {
             <div className = "wrapper">
                 <div className= "openCard">Проверено слов: {openCard}</div>
                 <div className = { pressed ? 'cardItem' : 'animation' }>
+              
                     <CardItem
                         color = { colorWord }
                         english = { words[index].english }

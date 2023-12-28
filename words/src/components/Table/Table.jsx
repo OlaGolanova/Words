@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState,  useContext} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faClose } from '@fortawesome/free-solid-svg-icons';
 
 
-import words from '../../utils/words.json'; 
+// import words from '../../utils/words.json'; 
 import TableRow from '../TableRow/TableRow';
 import InputChoice from '../InputChoice/InputChoice';
+import { WordsContext } from '../WordsContextProvider/WordsContextProvider';
 import './Table.scss';
 
 
 
+
 export default function Table() {
+    const { words, flag, setFlag } = useContext(WordsContext);
     const [pressed, setPressed] = useState(false);
-    const [editEnglish, setEditEnglish] = useState('');
-    const [editTranscription, setEditTranscription] = useState('');
-    const [editRussian, setEditRussian] = useState('');
+    const [editNewEnglish, setEditNewEnglish] = useState('');
+    const [editNewTranscription, setEditNewTranscription] = useState('');
+    const [editNewRussian, setEditNewRussian] = useState('');
 
     const [ inputEmptyEnglish, setInputEmptyEnglish ] = useState('');
     const [ inputEmptyTranscription, setInputEmptyTranscription ] = useState('');
@@ -30,11 +33,11 @@ export default function Table() {
     const [ classNameSaveBtn, setClassNameSaveBtn ] = useState('disable');
 
  
-    const handleCancel = () => {
+    const wordCancelNew = () => {
         setPressed(!pressed);
-        setEditEnglish('');
-        setEditTranscription('');
-        setEditRussian('');
+        setEditNewEnglish('');
+        setEditNewTranscription('');
+        setEditNewRussian('');
         setInputEmptyEnglish('');
         setInputEmptyTranscription('');
         setInputEmptyRussian('');
@@ -42,7 +45,7 @@ export default function Table() {
 
     const handleChangeInputEnglish = (e) => {
         const englishRegex = /^[A-Za-z]+$/;
-        setEditEnglish(e.target.value);
+        setEditNewEnglish(e.target.value);
         setIsValidEnglish(englishRegex.test(e.target.value));
 
         if (englishRegex.test(e.target.value)) {
@@ -60,7 +63,7 @@ export default function Table() {
 
     const handleChangeInputTranscription = (e) => {
         const transcriptionRegex =  /^\[?[a-zA-Z-\d ]+\]?$/ ;
-        setEditTranscription(e.target.value);
+        setEditNewTranscription(e.target.value);
         setIsValidTranscription(transcriptionRegex.test(e.target.value));
  
 
@@ -77,7 +80,7 @@ export default function Table() {
     };
     const handleChangeInputRussian = (e) => {
         const russianRegex = /^[а-яёА-ЯЁ]+$/;
-        setEditRussian(e.target.value);
+        setEditNewRussian(e.target.value);
         setIsValidRussian(russianRegex.test(e.target.value));
 
         if (russianRegex.test(e.target.value)) {
@@ -92,21 +95,86 @@ export default function Table() {
         };
     };
 
-    const handleSave = () => {
+    const wordSaveNew = () => {
 
-        console.log(editEnglish);
-        console.log( editTranscription);
-        console.log(editRussian);
-        setEditEnglish('');
-        setEditTranscription('');
-        setEditRussian('');
+        setEditNewEnglish('');
+        setEditNewTranscription('');
+        setEditNewRussian('');
         setIsValidEnglish(false);
         setIsValidTranscription(false);
         setIsValidRussian(false);
         setDisableBtn(true);
         setClassNameSaveBtn('disable');
 
+        const element = {
+            english: editNewEnglish,
+            transcription: editNewTranscription,
+            russian: editNewRussian
+        };
+
+        fetch('/api/words/add',
+            {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json;charset=utf-8'},
+                body: JSON.stringify(element)
+            })
+            .then(response => response.json())
+            .then(element => {
+                console.log(element);
+                setFlag(!flag);
+            })
+
+            .catch(error => console.log(error));
     };
+
+    const wordDelete = (id) => {
+
+        const element = id;
+
+        fetch(`/api/words/ ${element} /delete`,
+            {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json;charset=utf-8'},
+                body: JSON.stringify(element)
+            })
+            .then(response => response.json())
+            .then(elem => {
+                console.log(elem);
+                setFlag(!flag);
+            })
+
+            .catch(error => console.log(error));
+        
+    };
+
+    const wordEdit = (id,editEnglish,editTranscription,editRussian) => {
+
+        const el = id;
+        const element = {
+            id: id,
+            english: editEnglish,
+            transcription: editTranscription,
+            russian: editRussian,
+            tags: '',
+            tags_json: '[]'
+        }; 
+
+        fetch(`/api/words/ ${el} /update`,
+            {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json;charset=utf-8'},
+                body: JSON.stringify(element)
+            })
+            .then(response => response.json())
+            .then(elem => {
+                console.log(elem);
+                setFlag(!flag);
+            })
+
+            .catch(error => console.log(error));
+
+    };
+
 
     const inputNewWord = (
         <tr className= "choiceTr" >
@@ -115,41 +183,43 @@ export default function Table() {
                 <InputChoice
                     type="text"
                     className = { inputEmptyEnglish }
-                    value = { editEnglish }
+                    value = { editNewEnglish }
                     onEdit = { handleChangeInputEnglish } />
             </td>
             <td> 
                 <InputChoice
                     type="text"
                     className = { inputEmptyTranscription }
-                    value = { editTranscription }
+                    value = { editNewTranscription }
                     onEdit = { handleChangeInputTranscription }/>  
             </td>
             <td> 
                 <InputChoice
                     type="text"
                     className = { inputEmptyRussian}
-                    value = { editRussian }
+                    value = { editNewRussian }
                     onEdit = { handleChangeInputRussian }/> 
             </td>
             <td>
                 <button 
                     className={`save ${classNameSaveBtn}`} 
                     disabled={disableBtn} 
-                    onClick = { handleSave }>
+                    onClick = { wordSaveNew }>
                     <FontAwesomeIcon icon = { faCheck } />
                     Сохранить
                 </button>
                 <button 
                     className = "cancel"
-                    onClick = {  handleCancel } >
+                    onClick = {  wordCancelNew } >
                     <FontAwesomeIcon icon = { faClose } />
                 </button>
             </td>
         </tr>      
     );
 
+
     return (
+   
         <div className="table">
             <table>
                 <thead>
@@ -164,7 +234,7 @@ export default function Table() {
                 <tbody>
                     <>
                         { inputNewWord } 
-                  
+                
                     </>
                     {
                         words.map(function (word,index) {
@@ -175,13 +245,16 @@ export default function Table() {
                                 english = { word.english }
                                 transcription = { word.transcription }
                                 russian = { word.russian }
-                                onDelete = { id => console.log( word.id) }
+                                onDelete = { (id) => wordDelete (word.id) }
+                                onEdit = { (id,editEnglish,editTranscription,editRussian) => 
+                                    wordEdit(word.id, editEnglish,editTranscription,editRussian) }
                             />;
                         })
                     }
                 </tbody>
             </table>
         </div>
+  
     );  
 }
   

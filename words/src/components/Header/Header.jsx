@@ -1,21 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { Link, useLocation } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
+import { WordsContext } from '../WordsContextProvider/WordsContextProvider';
 import logo from '../../utils/logo1.png';
 import Timer from '../Timer/Timer';
 import './Header.scss';
 
   
 export default  function Header(){
+    const { words, setWords, flag, setFlag } = useContext(WordsContext);
     const location = useLocation();
     const isTrainingMode = location.pathname === '/Words/game';
     const [pressedCardBtn, setPressedCardBtn] = useState(isTrainingMode);
     const [pressedTableBtn, setPressedTableBtn] = useState(!isTrainingMode);
     const [value, setValue] = useState('');
+  
    
     const handleChangeCardBtn = () => {
         if (!pressedCardBtn){
@@ -37,7 +40,15 @@ export default  function Header(){
 
     const handleChangeValue = (event) => {
         setValue(event.target.value);
-      
+        const newWords = words.filter(word => word.russian.toLowerCase().includes(event.target.value.toLowerCase()) 
+        ||  word.english.toLowerCase().includes(event.target.value.toLowerCase()) );
+        console.log(newWords);
+
+        setWords(newWords);
+
+        if(event.target.value === '') {
+            setFlag(!flag);
+        }
     };
     console.log( value.toLowerCase() );
 
