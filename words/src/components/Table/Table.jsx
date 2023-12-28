@@ -97,9 +97,18 @@ export default function Table() {
 
     const wordSaveNew = () => {
 
+<<<<<<< HEAD
         setEditNewEnglish('');
         setEditNewTranscription('');
         setEditNewRussian('');
+=======
+        console.log(editEnglish);
+        console.log( editTranscription);
+        console.log(editRussian);
+        setEditEnglish('');
+        setEditTranscription('');
+        setEditRussian('');
+>>>>>>> 78ec08bcabfebb9910d06fd7e4a4582d20148fd9
         setIsValidEnglish(false);
         setIsValidTranscription(false);
         setIsValidRussian(false);
