@@ -75,10 +75,10 @@ export default function App() {
                     <Header />
                     <Routes>
                         <Route  
-                            path="/Words" 
+                            path="https://olagolanova.github.io/Words" 
                             exact element={(isLoading || words.length === 0) ? <Loader/> : <Table/> }/>
                         <Route  
-                            path="/Words/game" 
+                            path="https://olagolanova.github.io/Words/game" 
                             element={(isLoading || words.length === 0) ? <Loader/> : <Card/> }/>
                         <Route  
                             path="*" 
