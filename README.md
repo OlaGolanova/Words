@@ -10,5 +10,3 @@
 
 ## Демо
 https://Olagolanova.github.io/Words/
-
-...проект в работе...
