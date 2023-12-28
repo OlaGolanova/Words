@@ -30,7 +30,7 @@ export default function App() {
     useEffect(() => {
         setError(null);
         setIsLoading(true);
-        fetch('http://itgirlschool.justmakeit.ru/api/words')
+        fetch('https://itgirlschool.justmakeit.ru/api/words')
             .then(response => {
                 if (response.ok) {
                     return response.json();
