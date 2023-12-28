@@ -24,13 +24,10 @@ export default function App() {
     const [error, setError] = useState(null);
     const [flag, setFlag] = useState();
    
-    // const [searchWord, setSearchWord ] = useState();
-    // const [flag2, setFlag2] = useState();
-
     useEffect(() => {
         setError(null);
         setIsLoading(true);
-        fetch('https://itgirlschool.justmakeit.ru/api/words')
+        fetch('https://itgirlschool.justmakeit.ru/api/words' || 'http://itgirlschool.justmakeit.ru/api/words')
             .then(response => {
                 if (response.ok) {
                     return response.json();
