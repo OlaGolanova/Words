@@ -1,13 +1,10 @@
 @import '../../utils/variables';
 
-
-
     header {
     z-index: 1;
     display: flex;
     justify-content: space-between;
     min-height: 300px;
-    width: 100%;
     background: $colorHeader;
     padding: 50px 200px 50px 200px;
         .header {
@@ -112,6 +109,10 @@
         @media (max-width: 991px) {
             width: 130px;
             height: 130px;
+        }
+        @media (max-width: 640px) {
+            width: 70px;
+            height: 80px;
         }
         }
     
