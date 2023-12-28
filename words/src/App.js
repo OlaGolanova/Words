@@ -24,10 +24,9 @@ export default function App() {
     const [error, setError] = useState(null);
     const [flag, setFlag] = useState();
    
-    const [searchWord, setSearchWord ] = useState();
-    const [flag2, setFlag2] = useState();
+    // const [searchWord, setSearchWord ] = useState();
+    // const [flag2, setFlag2] = useState();
 
-    console.log(searchWord);
     useEffect(() => {
         setError(null);
         setIsLoading(true);

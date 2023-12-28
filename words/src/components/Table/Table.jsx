@@ -120,7 +120,6 @@ export default function Table() {
             })
             .then(response => response.json())
             .then(element => {
-                console.log(element);
                 setFlag(!flag);
             })
 
@@ -139,7 +138,6 @@ export default function Table() {
             })
             .then(response => response.json())
             .then(elem => {
-                console.log(elem);
                 setFlag(!flag);
             })
 
@@ -167,7 +165,6 @@ export default function Table() {
             })
             .then(response => response.json())
             .then(elem => {
-                console.log(elem);
                 setFlag(!flag);
             })
 

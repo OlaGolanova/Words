@@ -87,11 +87,6 @@ export default function TableRow(props){
     const wordSave = () => {
         setPressed(!pressed);
         onEdit(id, editEnglish, editTranscription, editRussian);
-
-        // console.log(editEnglish);
-        // console.log( editTranscription);
-        // console.log(editRussian);
-
     };
   
    
